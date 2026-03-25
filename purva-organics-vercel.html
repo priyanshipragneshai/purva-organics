@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purva Organics</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#111;min-height:100vh}
+.login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#1e293b,#334155)}
+.login-box{background:#fff;border-radius:12px;padding:40px;width:380px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.login-box h1{font-size:22px;margin-bottom:4px;color:#1e293b}
+.login-box p{color:#64748b;font-size:14px;margin-bottom:24px}
+.login-box label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#334155}
+.login-box select,.login-box input{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin-bottom:16px;outline:none}
+.login-box select:focus,.login-box input:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.login-box button{width:100%;padding:12px;background:#1a56db;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer}
+.login-box button:hover{background:#1e40af}
+.login-err{color:#dc2626;font-size:13px;margin-bottom:12px;display:none}
+.app-wrap{display:flex;min-height:100vh}
+.sidebar{width:220px;background:#1e293b;color:#cbd5e1;padding:20px 0;display:flex;flex-direction:column;position:fixed;height:100vh;z-index:10;overflow-y:auto}
+.sidebar .logo{padding:0 20px 20px;border-bottom:1px solid #334155;margin-bottom:8px}
+.sidebar .logo h2{color:#fff;font-size:17px}
+.sidebar .logo span{font-size:12px;color:#94a3b8}
+.sidebar nav{flex:1;display:flex;flex-direction:column}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:11px 20px;color:#cbd5e1;text-decoration:none;font-size:14px;cursor:pointer;transition:all .15s}
+.sidebar nav a:hover{background:#334155;color:#fff}
+.sidebar nav a.active{background:#3b82f6;color:#fff;font-weight:600}
+.sidebar .user-info{padding:16px 20px;border-top:1px solid #334155;font-size:12px}
+.sidebar .user-info .role{color:#3b82f6;font-weight:600;text-transform:uppercase;font-size:11px}
+.main{margin-left:220px;flex:1;padding:24px;min-height:100vh}
+.page-hdr{margin-bottom:24px}
+.page-hdr h1{font-size:22px;font-weight:700}
+.page-hdr p{color:#555;font-size:14px;margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
+.sc{background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sc .lb{font-size:12px;color:#555;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.sc .vl{font-size:26px;font-weight:700;margin-top:4px}
+.sc .sb{font-size:12px;color:#555;margin-top:2px}
+.card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px;overflow:hidden}
+.card-hd{padding:16px 20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}
+.card-hd h3{font-size:15px;font-weight:700}
+table{width:100%;border-collapse:collapse}
+th{background:#f8fafc;padding:10px 14px;text-align:left;font-size:12px;text-transform:uppercase;color:#555;font-weight:700;letter-spacing:.3px;border-bottom:1px solid #ddd}
+td{padding:10px 14px;font-size:13px;border-bottom:1px solid #f1f5f9}
+tr:hover td{background:#f8fafc}
+.btn{padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:6px}
+.btn-p{background:#1a56db;color:#fff}.btn-p:hover{background:#1e40af}
+.btn-s{background:#16a34a;color:#fff}
+.btn-d{background:#dc2626;color:#fff}
+.btn-o{background:#fff;color:#111;border:1px solid #ddd}
+.btn-sm{padding:5px 10px;font-size:12px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px}
+.fi{display:flex;flex-direction:column;gap:4px}
+.fi.full{grid-column:1/-1}
+.fi label{font-size:12px;font-weight:600;color:#555}
+.fi input,.fi select,.fi textarea{padding:9px 12px;border:1px solid #d1d5db;border-radius:7px;font-size:13px;outline:none;width:100%;box-sizing:border-box}
+.fi input:focus,.fi select:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
+.fa{padding:0 20px 20px;display:flex;gap:10px;justify-content:flex-end}
+.board{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.bcol{background:#f8fafc;border-radius:10px;padding:14px;min-height:300px}
+.bcol h4{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;padding-bottom:8px;display:flex;align-items:center;gap:6px}
+.bcol .cnt{color:#fff;font-size:10px;padding:2px 7px;border-radius:10px}
+.bcard{background:#fff;border-radius:8px;padding:12px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.bcard .ch{font-weight:700;font-size:13px}
+.bcard .mt{font-size:11px;color:#555;margin-top:4px}
+.bcard .ac{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.badge{display:inline-block;padding:3px 8px;border-radius:5px;font-size:11px;font-weight:600}
+.bg-gr{background:#dcfce7;color:#166534}.bg-rd{background:#fee2e2;color:#991b1b}.bg-bl{background:#dbeafe;color:#1e40af}.bg-yl{background:#fef9c3;color:#854d0e}
+.modal-ov{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:100}
+.modal{background:#fff;border-radius:12px;width:90%;max-width:700px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-hd{padding:20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}
+.modal-hd h3{font-size:16px;font-weight:700}
+.modal-cl{background:none;border:none;font-size:20px;cursor:pointer;color:#555}
+.empty{padding:40px;text-align:center;color:#555;font-size:14px}
+.toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;z-index:200;animation:si .3s ease}
+@keyframes si{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.tb{display:flex;gap:0;border-bottom:2px solid #ddd;margin-bottom:20px}
+.tb a{padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;color:#555;text-decoration:none}
+.tb a.active{color:#1a56db;border-bottom-color:#1a56db}
+@media(max-width:900px){.sidebar{width:180px}.main{margin-left:180px}}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0;padding:16px}.fg{grid-template-columns:1fr}.board{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+@media print{.sidebar,.page-hdr .btn,.no-print,.toast{display:none!important}.main{margin:0;padding:0}.card{box-shadow:none}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+
+<script>
+// =====================================================================
+// FIREBASE CONFIG — Replace apiKey with your real key from Firebase Console
+// Project Settings > General > Web API Key
+// =====================================================================
+firebase.initializeApp({
+  apiKey: "AIzaSyDgD7b4pcLhC297EgcNgYG-ui0uDQ_Qy5E",
+  authDomain: "purva-organics-pragnesh.firebaseapp.com",
+  projectId: "purva-organics-pragnesh",
+  storageBucket: "purva-organics-pragnesh.firebasestorage.app",
+  messagingSenderId: "132054678761",
+  appId: "1:132054678761:web:c5cb9f212e814d66ce8478"
+});
+const db = firebase.firestore();
+
+// =====================================================================
+// APP CONFIG
+// =====================================================================
+const PASSWORDS = {Admin:"Pragnesh2003@jasani",Purchase:"Purchase18today",Tester:"Tester30quality",Sales:"Sales082000"};
+const ACCESS = {
+  Admin:["dashboard","purchases","testing","inventory","sales","invoices","settings"],
+  Purchase:["dashboard","purchases","inventory"],
+  Tester:["dashboard","testing","inventory"],
+  Sales:["dashboard","inventory","sales","invoices"]
+};
+
+// =====================================================================
+// STATE
+// =====================================================================
+let S = {
+  auth:false, role:"", page:"dashboard",
+  purchases:[], testing:[], sales:[],
+  company:{name:"Purva Organics",gst:"",address:"",phone:"",email:"",bank:"",accountNo:"",ifsc:"",branch:""},
+  modal:null, toastMsg:null, toastTimer:null
+};
+let unsubs = [];
+
+// =====================================================================
+// UTILS
+// =====================================================================
+const $ = id => document.getElementById(id);
+const fmt = n => "\u20B9"+Number(n||0).toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
+const fq = n => Number(n||0).toLocaleString("en-IN")+" kg";
+const td = () => new Date().toISOString().split("T")[0];
+function toast(m){S.toastMsg=m;R();clearTimeout(S.toastTimer);S.toastTimer=setTimeout(()=>{S.toastMsg=null;R()},2500);}
+
+function getWAC(chem){
+  let tc=0,tq=0;
+  S.purchases.filter(p=>p.chemical===chem).forEach(p=>{tc+=p.qty*p.pricePerKg;tq+=p.qty;});
+  return tq>0?tc/tq:0;
+}
+function getInv(){
+  const c={};
+  S.testing.filter(t=>t.status==="Inventory").forEach(t=>{
+    if(!c[t.chemical])c[t.chemical]={qty:0,tc:0};
+    c[t.chemical].qty+=(t.qty||0);c[t.chemical].tc+=(t.qty||0)*(t.costPerKg||0);
+  });
+  S.sales.forEach(s=>{if(c[s.chemical])c[s.chemical].qty-=(s.qty||0);});
+  return c;
+}
+function uniq(arr,key){return [...new Set(arr.map(a=>a[key]).filter(Boolean))];}
+
+// =====================================================================
+// FIREBASE LISTENERS
+// =====================================================================
+function listen(){
+  unsubs.forEach(u=>u());unsubs=[];
+  unsubs.push(db.collection("purchases").orderBy("createdAt","desc").onSnapshot(s=>{S.purchases=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
+  unsubs.push(db.collection("testing").orderBy("createdAt","desc").onSnapshot(s=>{S.testing=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
+  unsubs.push(db.collection("sales").orderBy("createdAt","desc").onSnapshot(s=>{S.sales=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
+  unsubs.push(db.collection("settings").doc("company").onSnapshot(d=>{if(d.exists)S.company={...S.company,...d.data()};R();}));
+}
+
+// =====================================================================
+// RENDER ENGINE
+// =====================================================================
+function R(){
+  const r=$("root");
+  if(!S.auth){r.innerHTML=loginHTML();return;}
+  r.innerHTML=sidebarHTML()+'<div class="main">'+pageHTML()+'</div>'+(S.modal||"")+(S.toastMsg?`<div class="toast">${S.toastMsg}</div>`:"");
+}
+
+// =====================================================================
+// LOGIN
+// =====================================================================
+function loginHTML(){
+  return `<div class="login-page"><div class="login-box">
+    <h1>Purva Organics</h1><p>Chemical Trading Management System</p>
+    <div class="login-err" id="le">Invalid password</div>
+    <label>Select Role</label>
+    <select id="lr"><option>Admin</option><option>Purchase</option><option>Tester</option><option>Sales</option></select>
+    <label>Password</label>
+    <input type="password" id="lp" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button onclick="doLogin()">Sign In</button></div></div>`;
+}
+function doLogin(){
+  const r=$("lr").value,p=$("lp").value;
+  if(PASSWORDS[r]===p){S.auth=true;S.role=r;S.page="dashboard";listen();R();}
+  else{const e=$("le");e.style.display="block";setTimeout(()=>e.style.display="none",2000);}
+}
+function doLogout(){S.auth=false;S.role="";unsubs.forEach(u=>u());unsubs=[];R();}
+
+// =====================================================================
+// SIDEBAR
+// =====================================================================
+function sidebarHTML(){
+  const items=[
+    ["dashboard","Dashboard"],["purchases","Purchases"],["testing","Testing Board"],
+    ["inventory","Inventory"],["sales","Sales"],["invoices","Invoices"],["settings","Settings"]
+  ].filter(([k])=>ACCESS[S.role].includes(k));
+  return `<div class="sidebar"><div class="logo"><h2>Purva Organics</h2><span>Management System</span></div>
+  <nav>${items.map(([k,l])=>`<a class="${S.page===k?"active":""}" onclick="nav('${k}')">${l}</a>`).join("")}
+  <a onclick="doLogout()" style="margin-top:auto">Logout</a></nav>
+  <div class="user-info"><div class="role">${S.role}</div>Logged in</div></div>`;
+}
+function nav(p){S.page=p;S.modal=null;R();}
+
+// =====================================================================
+// PAGE ROUTER
+// =====================================================================
+function pageHTML(){
+  switch(S.page){
+    case "dashboard":return dashHTML();
+    case "purchases":return purchHTML();
+    case "testing":return testHTML();
+    case "inventory":return invHTML();
+    case "sales":return salesHTML();
+    case "invoices":return invocHTML();
+    case "settings":return settHTML();
+    default:return dashHTML();
+  }
+}
+
+// =====================================================================
+// DASHBOARD
+// =====================================================================
+function dashHTML(){
+  const inv=getInv();
+  const ts=Object.values(inv).reduce((a,v)=>a+v.qty,0);
+  const tp=S.purchases.reduce((a,p)=>a+p.qty*p.pricePerKg,0);
+  const tsv=S.sales.reduce((a,s)=>a+s.qty*s.pricePerKg,0);
+  const tcs=S.sales.reduce((a,s)=>a+s.qty*(s.costPerKg||0),0);
+  const gp=tsv-tcs;
+  const pt=S.testing.filter(t=>t.status!=="Inventory").length;
+  const cp={};
+  S.sales.forEach(s=>{if(!cp[s.chemical])cp[s.chemical]={rev:0,cost:0,qty:0};cp[s.chemical].rev+=s.qty*s.pricePerKg;cp[s.chemical].cost+=s.qty*(s.costPerKg||0);cp[s.chemical].qty+=s.qty;});
+  
+  let profitTable="";
+  if(Object.keys(cp).length){
+    profitTable=`<div class="card"><div class="card-hd"><h3>Profit by Chemical (Weighted Avg Cost)</h3></div>
+    <table><thead><tr><th>Chemical</th><th>Qty Sold</th><th>Revenue</th><th>Cost</th><th>Profit</th><th>Margin</th></tr></thead><tbody>
+    ${Object.entries(cp).map(([c,d])=>{const pr=d.rev-d.cost;const mg=d.rev>0?(pr/d.rev*100).toFixed(1):0;
+    return `<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td>${fmt(d.rev)}</td><td>${fmt(d.cost)}</td>
+    <td style="color:${pr>=0?"#16a34a":"#dc2626"}"><b>${fmt(pr)}</b></td>
+    <td><span class="badge ${pr>=0?"bg-gr":"bg-rd"}">${mg}%</span></td></tr>`;}).join("")}</tbody></table></div>`;
+  }
+  
+  return `<div class="page-hdr"><h1>Dashboard</h1><p>Overview of Purva Organics operations</p></div>
+  <div class="stats">
+    <div class="sc"><div class="lb">Total Inventory</div><div class="vl" style="color:#1a56db">${fq(ts)}</div><div class="sb">${Object.keys(inv).length} chemicals</div></div>
+    <div class="sc"><div class="lb">Total Purchases</div><div class="vl" style="color:#ea580c">${fmt(tp)}</div><div class="sb">${S.purchases.length} orders</div></div>
+    <div class="sc"><div class="lb">Total Sales</div><div class="vl" style="color:#16a34a">${fmt(tsv)}</div><div class="sb">${S.sales.length} orders</div></div>
+    <div class="sc"><div class="lb">Gross Profit</div><div class="vl" style="color:${gp>=0?"#16a34a":"#dc2626"}">${fmt(gp)}</div><div class="sb">Weighted avg cost method</div></div>
+  </div>
+  <div class="stats"><div class="sc"><div class="lb">Pending Tests</div><div class="vl">${pt}</div></div>
+  <div class="sc"><div class="lb">Chemicals Tracked</div><div class="vl">${Object.keys(inv).length}</div></div></div>
+  ${profitTable}
+  <div class="card"><div class="card-hd"><h3>Recent Purchases</h3></div>
+  <table><thead><tr><th>Date</th><th>Chemical</th><th>Vendor</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead><tbody>
+  ${S.purchases.slice(0,5).map(p=>`<tr><td>${p.date}</td><td><b>${p.chemical}</b></td><td>${p.vendor}</td><td>${fq(p.qty)}</td><td>${fmt(p.pricePerKg)}/kg</td><td>${fmt(p.qty*p.pricePerKg)}</td></tr>`).join("")}
+  ${S.purchases.length===0?'<tr><td colspan="6" class="empty">No purchases yet</td></tr>':""}</tbody></table></div>
+  <div class="card"><div class="card-hd"><h3>Recent Sales</h3></div>
+  <table><thead><tr><th>Date</th><th>Chemical</th><th>Customer</th><th>Qty</th><th>Rate</th><th>Margin/kg</th></tr></thead><tbody>
+  ${S.sales.slice(0,5).map(s=>{const m=s.pricePerKg-(s.costPerKg||0);
+  return `<tr><td>${s.date}</td><td><b>${s.chemical}</b></td><td>${s.customer}</td><td>${fq(s.qty)}</td><td>${fmt(s.pricePerKg)}/kg</td>
+  <td style="color:${m>=0?"#16a34a":"#dc2626"}"><b>${fmt(m)}/kg</b></td></tr>`;}).join("")}
+  ${S.sales.length===0?'<tr><td colspan="6" class="empty">No sales yet</td></tr>':""}</tbody></table></div>`;
+}
+
+// =====================================================================
+// PURCHASES
+// =====================================================================
+function purchHTML(){
+  return `<div class="page-hdr"><h1>Purchase Log</h1><p>Track all chemical purchases from vendors</p></div>
+  <div class="no-print" style="margin-bottom:16px;display:flex;gap:10px">
+    <button class="btn btn-p" onclick="showPF()">+ New Purchase</button>
+    <button class="btn btn-o" onclick="xcsv('purchases')">Export CSV</button></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Chemical</th><th>Vendor</th><th>Qty</th><th>Rate/kg</th><th>Total</th><th>By</th><th>Actions</th></tr></thead><tbody>
+  ${S.purchases.map(p=>`<tr><td>${p.date}</td><td><b>${p.chemical}</b></td><td>${p.vendor}</td><td>${fq(p.qty)}</td><td>${fmt(p.pricePerKg)}</td><td>${fmt(p.qty*p.pricePerKg)}</td>
+  <td><span class="badge bg-bl">${p.addedBy||""}</span></td>
+  <td><button class="btn btn-d btn-sm" onclick="delP('${p.id}')">Delete</button></td></tr>`).join("")}
+  ${S.purchases.length===0?'<tr><td colspan="8" class="empty">No purchases yet. Click "+ New Purchase" to add one.</td></tr>':""}</tbody></table></div>`;
+}
+
+function showPF(){
+  const chems=uniq(S.purchases,"chemical").map(c=>`<option value="${c}">`).join("");
+  const vends=uniq(S.purchases,"vendor").map(v=>`<option value="${v}">`).join("");
+  S.modal=`<div class="modal-ov" onclick="if(event.target===this){S.modal=null;R()}">
+  <div class="modal"><div class="modal-hd"><h3>New Purchase Entry</h3><button class="modal-cl" onclick="S.modal=null;R()">&times;</button></div>
+  <div class="fg">
+    <div class="fi"><label>Date</label><input type="date" id="pD" value="${td()}"></div>
+    <div class="fi"><label>Chemical Name</label><input id="pC" placeholder="e.g. TB Blue" list="cl"><datalist id="cl">${chems}</datalist></div>
+    <div class="fi"><label>Vendor</label><input id="pV" placeholder="Vendor name" list="vl"><datalist id="vl">${vends}</datalist></div>
+    <div class="fi"><label>Quantity (kg)</label><input type="number" id="pQ" placeholder="500"></div>
+    <div class="fi"><label>Price per kg (INR)</label><input type="number" id="pR" placeholder="120" step="0.01"></div>
+    <div class="fi full"><label>Notes (optional)</label><input id="pN" placeholder="Batch number, quality notes..."></div>
+  </div>
+  <div class="fa"><button class="btn btn-o" onclick="S.modal=null;R()">Cancel</button><button class="btn btn-p" onclick="saveP()">Save Purchase</button></div>
+  </div></div>`;R();
+}
+
+async function saveP(){
+  const d={date:$("pD").value,chemical:$("pC").value.trim(),vendor:$("pV").value.trim(),
+    qty:parseFloat($("pQ").value)||0,pricePerKg:parseFloat($("pR").value)||0,
+    notes:$("pN").value.trim(),addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  if(!d.chemical||!d.vendor||!d.qty||!d.pricePerKg){toast("Fill all required fields");return;}
+  try{
+    await db.collection("purchases").add(d);
+    await db.collection("testing").add({chemical:d.chemical,vendor:d.vendor,qty:d.qty,costPerKg:d.pricePerKg,
+      purchaseDate:d.date,status:"Received",addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    S.modal=null;toast("Purchase saved & sent to testing");
+  }catch(e){toast("Error: "+e.message);}
+}
+
+async function delP(id){if(!confirm("Delete this purchase?"))return;await db.collection("purchases").doc(id).delete();toast("Deleted");}
+
+// =====================================================================
+// TESTING BOARD
+// =====================================================================
+function testHTML(){
+  const stages=["Received","Testing","Tested","Inventory"];
+  const colors={"Received":"#3b82f6","Testing":"#f59e0b","Tested":"#8b5cf6","Inventory":"#16a34a"};
+  return `<div class="page-hdr"><h1>Testing Board</h1><p>Track chemicals through the testing pipeline</p></div>
+  <div class="board">${stages.map(st=>{
+    const items=S.testing.filter(t=>t.status===st);
+    return `<div class="bcol"><h4 style="border-bottom-color:${colors[st]}">${st} <span class="cnt" style="background:${colors[st]}">${items.length}</span></h4>
+    ${items.map(t=>`<div class="bcard" style="border-left:3px solid ${colors[st]}">
+      <div class="ch">${t.chemical}</div><div class="mt">${fq(t.qty)} from ${t.vendor}<br>${t.purchaseDate||""}</div>
+      <div class="ac">
+        ${st==="Received"?`<button class="btn btn-p btn-sm" onclick="mvT('${t.id}','Testing')">Start Testing</button>`:""}
+        ${st==="Testing"?`<button class="btn btn-s btn-sm" onclick="mvT('${t.id}','Tested')">Mark Tested</button><button class="btn btn-d btn-sm" onclick="rejT('${t.id}')">Reject</button>`:""}
+        ${st==="Tested"?`<button class="btn btn-s btn-sm" onclick="mvT('${t.id}','Inventory')">Move to Inventory</button>`:""}
+        ${st==="Inventory"?`<span class="badge bg-gr">In Stock</span>`:""}
+      </div></div>`).join("")}
+    ${items.length===0?'<div class="empty" style="padding:20px;font-size:12px">No items</div>':""}
+    </div>`;}).join("")}</div>`;
+}
+
+async function mvT(id,ns){await db.collection("testing").doc(id).update({status:ns});toast("Moved to "+ns);}
+async function rejT(id){if(!confirm("Reject this chemical?"))return;await db.collection("testing").doc(id).delete();toast("Rejected");}
+
+// =====================================================================
+// INVENTORY
+// =====================================================================
+function invHTML(){
+  const inv=getInv();const rows=Object.entries(inv).sort((a,b)=>a[0].localeCompare(b[0]));
+  return `<div class="page-hdr"><h1>Inventory</h1><p>Current stock (auto-calculated from testing & sales)</p></div>
+  <div class="no-print" style="margin-bottom:16px"><button class="btn btn-o" onclick="xcsv('inventory')">Export CSV</button></div>
+  <div class="card"><table><thead><tr><th>Chemical</th><th>Available Stock</th><th>Avg Cost/kg</th><th>Stock Value</th><th>Status</th></tr></thead><tbody>
+  ${rows.map(([c,d])=>{const avg=d.qty>0?d.tc/d.qty:0;const v=d.qty*avg;
+    const st=d.qty<=0?"Out of Stock":d.qty<50?"Low Stock":"In Stock";
+    const bc=d.qty<=0?"bg-rd":d.qty<50?"bg-yl":"bg-gr";
+    return `<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td>${fmt(avg)}</td><td>${fmt(v)}</td><td><span class="badge ${bc}">${st}</span></td></tr>`;}).join("")}
+  ${rows.length===0?'<tr><td colspan="5" class="empty">No inventory yet. Purchase chemicals and move through testing.</td></tr>':""}</tbody></table></div>`;
+}
+
+// =====================================================================
+// SALES
+// =====================================================================
+function salesHTML(){
+  return `<div class="page-hdr"><h1>Sales</h1><p>Track all sales to customers</p></div>
+  <div class="no-print" style="margin-bottom:16px;display:flex;gap:10px">
+    <button class="btn btn-p" onclick="showSF()">+ New Sale</button>
+    <button class="btn btn-o" onclick="xcsv('sales')">Export CSV</button></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Chemical</th><th>Customer</th><th>Qty</th><th>Sell Rate</th><th>Cost Rate</th><th>Margin/kg</th><th>Total Profit</th><th>Actions</th></tr></thead><tbody>
+  ${S.sales.map(s=>{const m=s.pricePerKg-(s.costPerKg||0);const p=m*s.qty;
+  return `<tr><td>${s.date}</td><td><b>${s.chemical}</b></td><td>${s.customer}</td><td>${fq(s.qty)}</td><td>${fmt(s.pricePerKg)}</td><td>${fmt(s.costPerKg||0)}</td>
+  <td style="color:${m>=0?"#16a34a":"#dc2626"}"><b>${fmt(m)}</b></td><td style="color:${p>=0?"#16a34a":"#dc2626"}"><b>${fmt(p)}</b></td>
+  <td><button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">Invoice</button> <button class="btn btn-d btn-sm" onclick="delS('${s.id}')">Delete</button></td></tr>`;}).join("")}
+  ${S.sales.length===0?'<tr><td colspan="9" class="empty">No sales recorded yet</td></tr>':""}</tbody></table></div>`;
+}
+
+function showSF(){
+  const inv=getInv();const chems=Object.entries(inv).filter(([,d])=>d.qty>0);
+  const custs=uniq(S.sales,"customer").map(c=>`<option value="${c}">`).join("");
+  S.modal=`<div class="modal-ov" onclick="if(event.target===this){S.modal=null;R()}">
+  <div class="modal"><div class="modal-hd"><h3>New Sale Entry</h3><button class="modal-cl" onclick="S.modal=null;R()">&times;</button></div>
+  <div class="fg">
+    <div class="fi"><label>Date</label><input type="date" id="sD" value="${td()}"></div>
+    <div class="fi"><label>Chemical</label><select id="sC" onchange="updCH()"><option value="">Select chemical</option>
+      ${chems.map(([c,d])=>`<option value="${c}">${c} (${fq(d.qty)} avail)</option>`).join("")}</select></div>
+    <div class="fi"><label>Customer</label><input id="sCu" placeholder="Customer name" list="cul"><datalist id="cul">${custs}</datalist></div>
+    <div class="fi"><label>Quantity (kg)</label><input type="number" id="sQ" placeholder="250"></div>
+    <div class="fi"><label>Selling Price/kg (INR)</label><input type="number" id="sP" placeholder="130" step="0.01"></div>
+    <div class="fi"><label>Weighted Avg Cost/kg</label><input id="sW" readonly style="background:#f1f5f9"></div>
+    <div class="fi"><label>Customer Address</label><input id="sA" placeholder="For invoice"></div>
+    <div class="fi"><label>Customer GST (optional)</label><input id="sG" placeholder="GST number"></div>
+  </div>
+  <div class="fa"><button class="btn btn-o" onclick="S.modal=null;R()">Cancel</button><button class="btn btn-s" onclick="saveS()">Save Sale</button></div>
+  </div></div>`;R();
+}
+function updCH(){const c=$("sC").value;const w=getWAC(c);$("sW").value=w>0?fmt(w)+"/kg":"N/A";}
+
+async function saveS(){
+  const chem=$("sC").value;
+  const d={date:$("sD").value,chemical:chem,customer:$("sCu").value.trim(),
+    qty:parseFloat($("sQ").value)||0,pricePerKg:parseFloat($("sP").value)||0,
+    costPerKg:getWAC(chem),customerAddr:$("sA").value.trim(),customerGst:$("sG").value.trim(),
+    addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  if(!d.chemical||!d.customer||!d.qty||!d.pricePerKg){toast("Fill all required fields");return;}
+  const inv=getInv();
+  if(!inv[chem]||inv[chem].qty<d.qty){toast("Not enough stock!");return;}
+  try{await db.collection("sales").add(d);S.modal=null;toast("Sale recorded");}catch(e){toast("Error: "+e.message);}
+}
+async function delS(id){if(!confirm("Delete this sale?"))return;await db.collection("sales").doc(id).delete();toast("Deleted");}
+
+// =====================================================================
+// INVOICES
+// =====================================================================
+function invocHTML(){
+  return `<div class="page-hdr"><h1>Invoices</h1><p>Generate GST invoices from sales</p></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Invoice #</th><th>Customer</th><th>Chemical</th><th>Amount</th><th>Actions</th></tr></thead><tbody>
+  ${S.sales.map((s,i)=>{const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(i+1).padStart(3,"0");
+  return `<tr><td>${s.date}</td><td><b>${n}</b></td><td>${s.customer}</td><td>${s.chemical}</td><td>${fmt(s.qty*s.pricePerKg)}</td>
+  <td><button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">View / Print</button></td></tr>`;}).join("")}
+  ${S.sales.length===0?'<tr><td colspan="6" class="empty">No invoices yet. Create a sale first.</td></tr>':""}</tbody></table></div>`;
+}
+
+function genInv(sid){
+  const s=S.sales.find(x=>x.id===sid);if(!s)return;
+  const idx=S.sales.indexOf(s);
+  const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(idx+1).padStart(3,"0");
+  S.modal=`<div class="modal-ov" onclick="if(event.target===this){S.modal=null;R()}">
+  <div class="modal" style="max-width:850px"><div class="modal-hd"><h3>Invoice ${n}</h3>
+  <div><button class="btn btn-o btn-sm" onclick="$('gc').style.display=$('gc').style.display==='none'?'block':'none'">GST Options</button>
+  <button class="btn btn-p btn-sm" onclick="printInv()" style="margin-left:8px">Print</button>
+  <button class="modal-cl" onclick="S.modal=null;R()" style="margin-left:8px">&times;</button></div></div>
+  <div id="gc" style="display:none;padding:16px 20px;background:#f8fafc;border-bottom:1px solid #e2e8f0">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <label style="font-size:13px;font-weight:600">Apply GST:</label>
+      <select id="gyn" onchange="updInvP('${sid}')" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option value="No">No</option><option value="Yes">Yes</option></select>
+      <label style="font-size:13px;font-weight:600">Rate:</label>
+      <select id="grt" onchange="updInvP('${sid}')" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
+      <label style="font-size:13px;font-weight:600">Type:</label>
+      <select id="gtp" onchange="updInvP('${sid}')" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option value="IGST">IGST</option><option value="CS">CGST+SGST</option></select>
+    </div>
+  </div>
+  <div id="ib" style="padding:20px">${buildInv(s,n,false,18,"IGST")}</div>
+  </div></div>`;R();
+}
+
+function updInvP(sid){
+  const s=S.sales.find(x=>x.id===sid);if(!s)return;
+  const idx=S.sales.indexOf(s);
+  const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(idx+1).padStart(3,"0");
+  const gst=$("gyn").value==="Yes";const rate=parseFloat($("grt").value);const tp=$("gtp").value;
+  $("ib").innerHTML=buildInv(s,n,gst,rate,tp);
+}
+
+function buildInv(s,n,gst,rate,tp){
+  const co=S.company;const sub=s.qty*s.pricePerKg;
+  let ga=0,gt=sub,gr="";
+  if(gst){ga=sub*rate/100;gt=sub+ga;
+    if(tp==="IGST"){gr=`<tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">IGST @ ${rate}%</td><td style="text-align:right;padding:10px">${fmt(ga)}</td></tr>`;}
+    else{const h=ga/2;gr=`<tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">CGST @ ${rate/2}%</td><td style="text-align:right;padding:10px">${fmt(h)}</td></tr>
+    <tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">SGST @ ${rate/2}%</td><td style="text-align:right;padding:10px">${fmt(h)}</td></tr>`;}
+  }
+  return `<div id="ip" style="background:#fff;padding:40px;border:1px solid #e2e8f0;border-radius:8px;max-width:750px;margin:0 auto">
+  <div style="display:flex;justify-content:space-between;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid #1e293b">
+    <div><h2 style="font-size:20px;margin-bottom:4px">${co.name||"Purva Organics"}</h2>
+    <p style="font-size:12px;color:#64748b;max-width:250px">${co.address||""}</p>
+    ${co.phone?`<p style="font-size:12px;color:#64748b">Ph: ${co.phone}</p>`:""}
+    ${co.gst?`<p style="font-size:12px;color:#64748b">GST: ${co.gst}</p>`:""}</div>
+    <div style="text-align:right"><h3 style="font-size:18px;color:#1a56db">TAX INVOICE</h3>
+    <p style="font-size:13px;margin-top:8px"><b>Invoice #:</b> ${n}</p><p style="font-size:13px"><b>Date:</b> ${s.date}</p></div>
+  </div>
+  <div style="margin-bottom:20px;padding:14px;background:#f8fafc;border-radius:8px">
+    <p style="font-size:11px;text-transform:uppercase;color:#64748b;font-weight:700;margin-bottom:4px">Bill To</p>
+    <p style="font-size:14px;font-weight:700">${s.customer}</p>
+    <p style="font-size:12px;color:#64748b">${s.customerAddr||""}</p>
+    ${s.customerGst?`<p style="font-size:12px;color:#64748b">GST: ${s.customerGst}</p>`:""}
+  </div>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:16px"><thead>
+  <tr><th style="padding:10px;background:#f1f5f9;text-align:left">Item</th><th style="padding:10px;background:#f1f5f9;text-align:right">Qty (kg)</th><th style="padding:10px;background:#f1f5f9;text-align:right">Rate/kg</th><th style="padding:10px;background:#f1f5f9;text-align:right">Amount</th></tr></thead>
+  <tbody><tr><td style="padding:10px">${s.chemical}</td><td style="padding:10px;text-align:right">${Number(s.qty).toLocaleString("en-IN")}</td><td style="padding:10px;text-align:right">${fmt(s.pricePerKg)}</td><td style="padding:10px;text-align:right">${fmt(sub)}</td></tr>
+  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">Subtotal</td><td style="text-align:right;font-weight:600;padding:10px">${fmt(sub)}</td></tr>
+  ${gr}
+  <tr style="background:#f1f5f9"><td colspan="3" style="text-align:right;font-weight:700;font-size:15px;padding:12px">Grand Total</td><td style="text-align:right;font-weight:700;font-size:15px;padding:12px">${fmt(gt)}</td></tr>
+  </tbody></table>
+  ${co.bank?`<div style="margin-top:20px;padding:14px;background:#f8fafc;border-radius:8px;font-size:12px">
+  <p style="font-weight:700;margin-bottom:4px">Bank Details</p>
+  <p>Bank: ${co.bank}</p><p>A/C: ${co.accountNo||""}</p><p>IFSC: ${co.ifsc||""}</p><p>Branch: ${co.branch||""}</p></div>`:""}
+  <div style="margin-top:30px;text-align:right;font-size:12px;color:#64748b">
+  <p>For <b>${co.name||"Purva Organics"}</b></p><p style="margin-top:40px">Authorized Signatory</p></div></div>`;
+}
+
+function printInv(){
+  const el=$("ip");if(!el)return;
+  const w=window.open("","","width=800,height=600");
+  w.document.write(`<html><head><title>Invoice</title><style>body{font-family:-apple-system,sans-serif;padding:20px}table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #e2e8f0}h2,h3{margin:0}p{margin:2px 0}</style></head><body>${el.outerHTML}</body></html>`);
+  w.document.close();w.print();
+}
+
+// =====================================================================
+// SETTINGS
+// =====================================================================
+function settHTML(){
+  const c=S.company;
+  return `<div class="page-hdr"><h1>Settings</h1><p>Company and bank details for invoices</p></div>
+  <div class="card"><div class="card-hd"><h3>Company Information</h3></div>
+  <div class="fg">
+    <div class="fi"><label>Company Name</label><input id="sn" value="${c.name||""}"></div>
+    <div class="fi"><label>GST Number</label><input id="sg" value="${c.gst||""}"></div>
+    <div class="fi full"><label>Address</label><textarea id="sa" rows="2" style="padding:9px 12px;border:1px solid #d1d5db;border-radius:7px;font-size:13px;outline:none;width:100%;box-sizing:border-box;font-family:inherit">${c.address||""}</textarea></div>
+    <div class="fi"><label>Phone</label><input id="sp" value="${c.phone||""}"></div>
+    <div class="fi"><label>Email</label><input id="se" value="${c.email||""}"></div>
+  </div></div>
+  <div class="card"><div class="card-hd"><h3>Bank Details</h3></div>
+  <div class="fg">
+    <div class="fi"><label>Bank Name</label><input id="sb" value="${c.bank||""}"></div>
+    <div class="fi"><label>Account Number</label><input id="sac" value="${c.accountNo||""}"></div>
+    <div class="fi"><label>IFSC Code</label><input id="si" value="${c.ifsc||""}"></div>
+    <div class="fi"><label>Branch</label><input id="sbr" value="${c.branch||""}"></div>
+  </div>
+  <div class="fa"><button class="btn btn-p" onclick="saveSett()">Save Settings</button></div></div>`;
+}
+
+async function saveSett(){
+  const d={name:$("sn").value.trim(),gst:$("sg").value.trim(),address:$("sa").value.trim(),
+    phone:$("sp").value.trim(),email:$("se").value.trim(),bank:$("sb").value.trim(),
+    accountNo:$("sac").value.trim(),ifsc:$("si").value.trim(),branch:$("sbr").value.trim()};
+  try{await db.collection("settings").doc("company").set(d);toast("Settings saved");}catch(e){toast("Error: "+e.message);}
+}
+
+// =====================================================================
+// EXPORT CSV
+// =====================================================================
+function xcsv(type){
+  let csv="",fn="";
+  if(type==="purchases"){
+    csv="Date,Chemical,Vendor,Qty(kg),Price/kg,Total,Added By\n";
+    S.purchases.forEach(p=>{csv+=`${p.date},"${p.chemical}","${p.vendor}",${p.qty},${p.pricePerKg},${p.qty*p.pricePerKg},${p.addedBy||""}\n`;});
+    fn="purva_purchases.csv";
+  }else if(type==="sales"){
+    csv="Date,Chemical,Customer,Qty(kg),Sell Rate,Cost Rate,Margin/kg,Total Profit\n";
+    S.sales.forEach(s=>{const m=s.pricePerKg-(s.costPerKg||0);csv+=`${s.date},"${s.chemical}","${s.customer}",${s.qty},${s.pricePerKg},${s.costPerKg||0},${m},${m*s.qty}\n`;});
+    fn="purva_sales.csv";
+  }else{
+    csv="Chemical,Available(kg),Avg Cost/kg,Stock Value\n";const inv=getInv();
+    Object.entries(inv).forEach(([c,d])=>{const a=d.qty>0?d.tc/d.qty:0;csv+=`"${c}",${d.qty},${a.toFixed(2)},${(d.qty*a).toFixed(2)}\n`;});
+    fn="purva_inventory.csv";
+  }
+  const b=new Blob([csv],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=fn;a.click();
+  toast(fn+" downloaded");
+}
+
+// =====================================================================
+// INIT
+// =====================================================================
+R();
+</script>
+</body>
+</html>
