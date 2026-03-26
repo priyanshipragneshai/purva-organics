@@ -169,7 +169,9 @@ function listen(){
 function R(){
   const r=$("root");
   if(!S.auth){r.innerHTML=loginHTML();return;}
-  r.innerHTML=sidebarHTML()+'<div class="main">'+pageHTML()+'</div>'+(S.modal||"")+(S.toastMsg?`<div class="toast">${S.toastMsg}</div>`:"");
+  // Don't re-render if a modal is open (prevents input fields from losing focus)
+  if(S.modal==="open")return;
+  r.innerHTML=sidebarHTML()+'<div class="main">'+pageHTML()+'</div>'+(S.toastMsg?`<div class="toast">${S.toastMsg}</div>`:"");
 }
 
 // =====================================================================
@@ -287,8 +289,10 @@ function purchHTML(){
 function showPF(){
   const chems=uniq(S.purchases,"chemical").map(c=>`<option value="${c}">`).join("");
   const vends=uniq(S.purchases,"vendor").map(v=>`<option value="${v}">`).join("");
-  S.modal=`<div class="modal-ov" onclick="if(event.target===this){S.modal=null;R()}">
-  <div class="modal"><div class="modal-hd"><h3>New Purchase Entry</h3><button class="modal-cl" onclick="S.modal=null;R()">&times;</button></div>
+  // Use a separate div so Firebase snapshots don't re-render the modal
+  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";
+  ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
+  ov.innerHTML=`<div class="modal"><div class="modal-hd"><h3>New Purchase Entry</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
   <div class="fg">
     <div class="fi"><label>Date</label><input type="date" id="pD" value="${td()}"></div>
     <div class="fi"><label>Chemical Name</label><input id="pC" placeholder="e.g. TB Blue" list="cl"><datalist id="cl">${chems}</datalist></div>
@@ -297,8 +301,9 @@ function showPF(){
     <div class="fi"><label>Price per kg (INR)</label><input type="number" id="pR" placeholder="120" step="0.01"></div>
     <div class="fi full"><label>Notes (optional)</label><input id="pN" placeholder="Batch number, quality notes..."></div>
   </div>
-  <div class="fa"><button class="btn btn-o" onclick="S.modal=null;R()">Cancel</button><button class="btn btn-p" onclick="saveP()">Save Purchase</button></div>
-  </div></div>`;R();
+  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">Cancel</button><button class="btn btn-p" onclick="saveP()">Save Purchase</button></div>
+  </div>`;
+  document.body.appendChild(ov);S.modal="open";
 }
 
 async function saveP(){
@@ -310,6 +315,7 @@ async function saveP(){
     await db.collection("purchases").add(d);
     await db.collection("testing").add({chemical:d.chemical,vendor:d.vendor,qty:d.qty,costPerKg:d.pricePerKg,
       purchaseDate:d.date,status:"Received",addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()});
+    const ov=document.getElementById("modalOv");if(ov)ov.remove();
     S.modal=null;toast("Purchase saved & sent to testing");
   }catch(e){toast("Error: "+e.message);}
 }
@@ -375,8 +381,9 @@ function salesHTML(){
 function showSF(){
   const inv=getInv();const chems=Object.entries(inv).filter(([,d])=>d.qty>0);
   const custs=uniq(S.sales,"customer").map(c=>`<option value="${c}">`).join("");
-  S.modal=`<div class="modal-ov" onclick="if(event.target===this){S.modal=null;R()}">
-  <div class="modal"><div class="modal-hd"><h3>New Sale Entry</h3><button class="modal-cl" onclick="S.modal=null;R()">&times;</button></div>
+  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";
+  ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
+  ov.innerHTML=`<div class="modal"><div class="modal-hd"><h3>New Sale Entry</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
   <div class="fg">
     <div class="fi"><label>Date</label><input type="date" id="sD" value="${td()}"></div>
     <div class="fi"><label>Chemical</label><select id="sC" onchange="updCH()"><option value="">Select chemical</option>
@@ -388,8 +395,9 @@ function showSF(){
     <div class="fi"><label>Customer Address</label><input id="sA" placeholder="For invoice"></div>
     <div class="fi"><label>Customer GST (optional)</label><input id="sG" placeholder="GST number"></div>
   </div>
-  <div class="fa"><button class="btn btn-o" onclick="S.modal=null;R()">Cancel</button><button class="btn btn-s" onclick="saveS()">Save Sale</button></div>
-  </div></div>`;R();
+  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">Cancel</button><button class="btn btn-s" onclick="saveS()">Save Sale</button></div>
+  </div>`;
+  document.body.appendChild(ov);S.modal="open";
 }
 function updCH(){const c=$("sC").value;const w=getWAC(c);$("sW").value=w>0?fmt(w)+"/kg":"N/A";}
 
@@ -402,7 +410,10 @@ async function saveS(){
   if(!d.chemical||!d.customer||!d.qty||!d.pricePerKg){toast("Fill all required fields");return;}
   const inv=getInv();
   if(!inv[chem]||inv[chem].qty<d.qty){toast("Not enough stock!");return;}
-  try{await db.collection("sales").add(d);S.modal=null;toast("Sale recorded");}catch(e){toast("Error: "+e.message);}
+  try{await db.collection("sales").add(d);
+    const ov=document.getElementById("modalOv");if(ov)ov.remove();
+    S.modal=null;toast("Sale recorded");
+  }catch(e){toast("Error: "+e.message);}
 }
 async function delS(id){if(!confirm("Delete this sale?"))return;await db.collection("sales").doc(id).delete();toast("Deleted");}
 
