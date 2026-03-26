@@ -234,8 +234,10 @@ function dashHTML(){
   const tp=S.purchases.reduce((a,p)=>a+p.qty*p.pricePerKg,0);
   const tsv=S.sales.reduce((a,s)=>a+s.qty*s.pricePerKg,0);
   const tcs=S.sales.reduce((a,s)=>a+s.qty*(s.costPerKg||0),0);
-  const gp=tsv-tcs;
-  const pt=S.testing.filter(t=>t.status!=="Inventory").length;
+  const rejItems=S.testing.filter(t=>t.status==="Rejected");
+  const rejLoss=rejItems.reduce((a,t)=>a+(t.qty||0)*(t.costPerKg||0),0);
+  const gp=tsv-tcs-rejLoss;
+  const pt=S.testing.filter(t=>t.status!=="Inventory"&&t.status!=="Rejected").length;
   const cp={};
   S.sales.forEach(s=>{if(!cp[s.chemical])cp[s.chemical]={rev:0,cost:0,qty:0};cp[s.chemical].rev+=s.qty*s.pricePerKg;cp[s.chemical].cost+=s.qty*(s.costPerKg||0);cp[s.chemical].qty+=s.qty;});
   
@@ -254,11 +256,20 @@ function dashHTML(){
     <div class="sc"><div class="lb">Total Inventory</div><div class="vl" style="color:#1a56db">${fq(ts)}</div><div class="sb">${Object.keys(inv).length} chemicals</div></div>
     <div class="sc"><div class="lb">Total Purchases</div><div class="vl" style="color:#ea580c">${fmt(tp)}</div><div class="sb">${S.purchases.length} orders</div></div>
     <div class="sc"><div class="lb">Total Sales</div><div class="vl" style="color:#16a34a">${fmt(tsv)}</div><div class="sb">${S.sales.length} orders</div></div>
-    <div class="sc"><div class="lb">Gross Profit</div><div class="vl" style="color:${gp>=0?"#16a34a":"#dc2626"}">${fmt(gp)}</div><div class="sb">Weighted avg cost method</div></div>
+    <div class="sc"><div class="lb">Gross Profit</div><div class="vl" style="color:${gp>=0?"#16a34a":"#dc2626"}">${fmt(gp)}</div><div class="sb">After rejection losses</div></div>
   </div>
-  <div class="stats"><div class="sc"><div class="lb">Pending Tests</div><div class="vl">${pt}</div></div>
-  <div class="sc"><div class="lb">Chemicals Tracked</div><div class="vl">${Object.keys(inv).length}</div></div></div>
+  <div class="stats">
+    <div class="sc"><div class="lb">Pending Tests</div><div class="vl">${pt}</div></div>
+    <div class="sc"><div class="lb">Chemicals Tracked</div><div class="vl">${Object.keys(inv).length}</div></div>
+    <div class="sc"><div class="lb">Rejection Loss</div><div class="vl" style="color:#dc2626">${fmt(rejLoss)}</div><div class="sb">${rejItems.length} chemical${rejItems.length!==1?"s":""} rejected</div></div>
+  </div>
   ${profitTable}
+  ${rejItems.length?`<div class="card"><div class="card-hd"><h3>Rejected Chemicals (Losses)</h3></div>
+  <table><thead><tr><th>Date</th><th>Chemical</th><th>Vendor</th><th>Qty</th><th>Cost/kg</th><th>Total Loss</th><th>Reason</th></tr></thead><tbody>
+  ${rejItems.map(t=>`<tr><td>${t.purchaseDate||""}</td><td><b>${t.chemical}</b></td><td>${t.vendor}</td><td>${fq(t.qty)}</td><td>${fmt(t.costPerKg||0)}</td>
+  <td style="color:#dc2626"><b>${fmt((t.qty||0)*(t.costPerKg||0))}</b></td>
+  <td><span style="font-size:12px;color:#991b1b">${t.rejectReason||""}</span></td></tr>`).join("")}
+  </tbody></table></div>`:""}
   <div class="card"><div class="card-hd"><h3>Recent Purchases</h3></div>
   <table><thead><tr><th>Date</th><th>Chemical</th><th>Vendor</th><th>Qty</th><th>Rate</th><th>Total</th></tr></thead><tbody>
   ${S.purchases.slice(0,5).map(p=>`<tr><td>${p.date}</td><td><b>${p.chemical}</b></td><td>${p.vendor}</td><td>${fq(p.qty)}</td><td>${fmt(p.pricePerKg)}/kg</td><td>${fmt(p.qty*p.pricePerKg)}</td></tr>`).join("")}
@@ -326,26 +337,46 @@ async function delP(id){if(!confirm("Delete this purchase?"))return;await db.col
 // TESTING BOARD
 // =====================================================================
 function testHTML(){
-  const stages=["Received","Testing","Tested","Inventory"];
-  const colors={"Received":"#3b82f6","Testing":"#f59e0b","Tested":"#8b5cf6","Inventory":"#16a34a"};
+  const stages=["Received","Testing","Tested","Inventory","Rejected"];
+  const colors={"Received":"#3b82f6","Testing":"#f59e0b","Tested":"#8b5cf6","Inventory":"#16a34a","Rejected":"#dc2626"};
   return `<div class="page-hdr"><h1>Testing Board</h1><p>Track chemicals through the testing pipeline</p></div>
-  <div class="board">${stages.map(st=>{
+  <div class="board" style="grid-template-columns:repeat(5,1fr)">${stages.map(st=>{
     const items=S.testing.filter(t=>t.status===st);
     return `<div class="bcol"><h4 style="border-bottom-color:${colors[st]}">${st} <span class="cnt" style="background:${colors[st]}">${items.length}</span></h4>
     ${items.map(t=>`<div class="bcard" style="border-left:3px solid ${colors[st]}">
       <div class="ch">${t.chemical}</div><div class="mt">${fq(t.qty)} from ${t.vendor}<br>${t.purchaseDate||""}</div>
+      ${t.rejectReason?`<div style="margin-top:6px;padding:6px 8px;background:#fee2e2;border-radius:4px;font-size:11px;color:#991b1b"><b>Reason:</b> ${t.rejectReason}</div>`:""}
       <div class="ac">
         ${st==="Received"?`<button class="btn btn-p btn-sm" onclick="mvT('${t.id}','Testing')">Start Testing</button>`:""}
-        ${st==="Testing"?`<button class="btn btn-s btn-sm" onclick="mvT('${t.id}','Tested')">Mark Tested</button><button class="btn btn-d btn-sm" onclick="rejT('${t.id}')">Reject</button>`:""}
+        ${st==="Testing"?`<button class="btn btn-s btn-sm" onclick="mvT('${t.id}','Tested')">Mark Tested</button><button class="btn btn-d btn-sm" onclick="showReject('${t.id}')">Reject</button>`:""}
         ${st==="Tested"?`<button class="btn btn-s btn-sm" onclick="mvT('${t.id}','Inventory')">Move to Inventory</button>`:""}
         ${st==="Inventory"?`<span class="badge bg-gr">In Stock</span>`:""}
+        ${st==="Rejected"?`<span class="badge bg-rd">Rejected</span>`:""}
       </div></div>`).join("")}
     ${items.length===0?'<div class="empty" style="padding:20px;font-size:12px">No items</div>':""}
     </div>`;}).join("")}</div>`;
 }
 
 async function mvT(id,ns){await db.collection("testing").doc(id).update({status:ns});toast("Moved to "+ns);}
-async function rejT(id){if(!confirm("Reject this chemical?"))return;await db.collection("testing").doc(id).delete();toast("Rejected");}
+function showReject(id){
+  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";
+  ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
+  ov.innerHTML=`<div class="modal" style="max-width:450px"><div class="modal-hd"><h3>Reject Chemical</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
+  <div style="padding:20px">
+    <div class="fi"><label>Reason for Rejection</label><textarea id="rejR" rows="3" placeholder="e.g. Failed purity test, contamination detected, wrong color..." style="padding:9px 12px;border:1px solid #d1d5db;border-radius:7px;font-size:13px;outline:none;width:100%;box-sizing:border-box;font-family:inherit"></textarea></div>
+  </div>
+  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">Cancel</button><button class="btn btn-d" onclick="doReject('${id}')">Reject Chemical</button></div>
+  </div>`;
+  document.body.appendChild(ov);S.modal="open";
+}
+async function doReject(id){
+  const reason=$("rejR").value.trim();
+  if(!reason){toast("Please enter a reason for rejection");return;}
+  try{await db.collection("testing").doc(id).update({status:"Rejected",rejectReason:reason});
+    const ov=document.getElementById("modalOv");if(ov)ov.remove();
+    S.modal=null;toast("Chemical rejected");
+  }catch(e){toast("Error: "+e.message);}
+}
 
 // =====================================================================
 // INVENTORY
