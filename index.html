@@ -296,10 +296,10 @@ function invHTML(){
   const inv=getInv();const rows=Object.entries(inv).sort((a,b)=>a[0].localeCompare(b[0]));
   return `<div class="page-hdr"><h1>${T("invPage")}</h1><p>${T("invSub")}</p></div>
   <div class="no-print" style="margin-bottom:16px"><button class="btn btn-o" onclick="xcsv('inventory')">${T("exportCSV")}</button></div>
-  <div class="card"><table><thead><tr><th>${T("chemical")}</th><th>${T("availStock")}</th><th>${T("avgCostKg")}</th><th>${T("stockVal")}</th><th>${T("status")}</th></tr></thead><tbody>
-  ${rows.map(([c,d])=>{const avg=d.qty>0?d.tc/d.qty:0;const v=d.qty*avg;const st=d.qty<=0?T("outOfStock"):d.qty<50?T("lowStock"):T("inStock");const bc=d.qty<=0?"bg-rd":d.qty<50?"bg-yl":"bg-gr";
-    return`<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td>${fmt(avg)}</td><td>${fmt(v)}</td><td><span class="badge ${bc}">${st}</span></td></tr>`;}).join("")}
-  ${rows.length===0?`<tr><td colspan="5" class="empty">${T("noInv")}</td></tr>`:""}</tbody></table></div>`;
+  <div class="card"><table><thead><tr><th>${T("chemical")}</th><th>${T("availStock")}</th><th>${T("status")}</th></tr></thead><tbody>
+  ${rows.map(([c,d])=>{const st=d.qty<=0?T("outOfStock"):d.qty<50?T("lowStock"):T("inStock");const bc=d.qty<=0?"bg-rd":d.qty<50?"bg-yl":"bg-gr";
+    return`<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td><span class="badge ${bc}">${st}</span></td></tr>`;}).join("")}
+  ${rows.length===0?`<tr><td colspan="3" class="empty">${T("noInv")}</td></tr>`:""}</tbody></table></div>`;
 }
 
 // =====================================================================
@@ -380,9 +380,21 @@ function payCustomerHTML(cb){
   ${rows.map(([c,d])=>{const pend=d.total-d.paid;const pct=d.total>0?d.paid/d.total*100:0;
     const st=pend<=0?T("fullyPaid"):d.paid>0?T("partialPaid"):T("unpaid");
     const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
+    const custSales=S.sales.filter(s=>s.customer===c);
+    const custPays=S.paymentLogs.filter(p=>p.type==="customer_in"&&p.party===c);
     return`<tr><td><b>${c}</b></td><td>${fmt(d.total)}</td><td style="color:#16a34a">${fmt(d.paid)}</td><td style="color:${pend>0?"#dc2626":"#16a34a"}"><b>${fmt(pend)}</b></td>
     <td><span class="badge ${bc}">${st}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${pend<=0?"#16a34a":"#f59e0b"}"></div></div></td>
-    <td>${pend>0?`<button class="btn btn-s btn-sm" onclick="showPayForm('customer_in','${c.replace(/'/g,"\\'")}')">${T("recordPayment")}</button>`:""}</td></tr>`;}).join("")}
+    <td style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn btn-o btn-sm" onclick="showDetails('customer','${c.replace(/'/g,"\\'")}')">Details</button>${pend>0?` <button class="btn btn-s btn-sm" onclick="showPayForm('customer_in','${c.replace(/'/g,"\\'")}')">${T("recordPayment")}</button>`:""}</td></tr>
+    <tr id="det_cust_${c.replace(/[^a-zA-Z0-9]/g,'_')}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc">
+      <div style="padding:16px 20px">
+        <div style="margin-bottom:12px"><b style="font-size:13px">Sales to ${c}:</b></div>
+        <table style="width:100%;margin-bottom:12px"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("chemical")}</th><th style="font-size:11px;padding:6px 10px">${T("qty")}</th><th style="font-size:11px;padding:6px 10px">${T("rate")}/kg</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("amount")}</th><th style="font-size:11px;padding:6px 10px;text-align:right">+GST</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("total")}</th></tr></thead>
+        <tbody>${custSales.map(s=>{const base=s.qty*s.pricePerKg;const gst=base*(s.gstRate||18)/100;return`<tr><td style="padding:6px 10px;font-size:12px">${s.date}</td><td style="padding:6px 10px;font-size:12px">${s.chemical}</td><td style="padding:6px 10px;font-size:12px">${fq(s.qty)}</td><td style="padding:6px 10px;font-size:12px">${fmt(s.pricePerKg)}</td><td style="padding:6px 10px;font-size:12px;text-align:right">${fmt(base)}</td><td style="padding:6px 10px;font-size:12px;text-align:right;color:#555">${fmt(gst)}</td><td style="padding:6px 10px;font-size:12px;text-align:right"><b>${fmt(base+gst)}</b></td></tr>`;}).join("")}</tbody></table>
+        ${custPays.length?`<div style="margin-bottom:8px"><b style="font-size:13px">Payments received from ${c}:</b></div>
+        <table style="width:100%"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("amount")}</th><th style="font-size:11px;padding:6px 10px">${T("paymentMode")}</th><th style="font-size:11px;padding:6px 10px">${T("reference")}</th></tr></thead>
+        <tbody>${custPays.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px;color:#16a34a"><b>${fmt(p.amount)}</b></td><td style="padding:6px 10px;font-size:12px">${p.mode||""}</td><td style="padding:6px 10px;font-size:12px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:"<div style='font-size:12px;color:#555;margin-top:4px'>No payments received yet</div>"}
+      </div>
+    </td></tr>`;}).join("")}
   ${rows.length===0?`<tr><td colspan="6" class="empty">${T("noSales")}</td></tr>`:""}</tbody></table></div>`;
 }
 
@@ -393,9 +405,21 @@ function payVendorHTML(vb){
   ${rows.map(([v,d])=>{const pend=d.total-d.paid;const pct=d.total>0?d.paid/d.total*100:0;
     const st=pend<=0?T("fullyPaid"):d.paid>0?T("partialPaid"):T("unpaid");
     const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
+    const vendPurch=S.purchases.filter(p=>p.vendor===v);
+    const vendPays=S.paymentLogs.filter(p=>p.type==="vendor_out"&&p.party===v);
     return`<tr><td><b>${v}</b></td><td>${fmt(d.total)}</td><td style="color:#16a34a">${fmt(d.paid)}</td><td style="color:${pend>0?"#dc2626":"#16a34a"}"><b>${fmt(pend)}</b></td>
     <td><span class="badge ${bc}">${st}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${pend<=0?"#16a34a":"#f59e0b"}"></div></div></td>
-    <td>${pend>0?`<button class="btn btn-p btn-sm" onclick="showPayForm('vendor_out','${v.replace(/'/g,"\\'")}')">${T("payNow")}</button>`:""}</td></tr>`;}).join("")}
+    <td style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn btn-o btn-sm" onclick="showDetails('vendor','${v.replace(/'/g,"\\'")}')">Details</button>${pend>0?` <button class="btn btn-p btn-sm" onclick="showPayForm('vendor_out','${v.replace(/'/g,"\\'")}')">${T("payNow")}</button>`:""}</td></tr>
+    <tr id="det_vend_${v.replace(/[^a-zA-Z0-9]/g,'_')}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc">
+      <div style="padding:16px 20px">
+        <div style="margin-bottom:12px"><b style="font-size:13px">Purchases from ${v}:</b></div>
+        <table style="width:100%;margin-bottom:12px"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("chemical")}</th><th style="font-size:11px;padding:6px 10px">${T("qty")}</th><th style="font-size:11px;padding:6px 10px">${T("rate")}/kg</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("total")}</th></tr></thead>
+        <tbody>${vendPurch.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px">${p.chemical}</td><td style="padding:6px 10px;font-size:12px">${fq(p.qty)}</td><td style="padding:6px 10px;font-size:12px">${fmt(p.pricePerKg)}</td><td style="padding:6px 10px;font-size:12px;text-align:right"><b>${fmt(p.qty*p.pricePerKg)}</b></td></tr>`).join("")}</tbody></table>
+        ${vendPays.length?`<div style="margin-bottom:8px"><b style="font-size:13px">Payments made to ${v}:</b></div>
+        <table style="width:100%"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("amount")}</th><th style="font-size:11px;padding:6px 10px">${T("paymentMode")}</th><th style="font-size:11px;padding:6px 10px">${T("reference")}</th></tr></thead>
+        <tbody>${vendPays.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px;color:#1a56db"><b>${fmt(p.amount)}</b></td><td style="padding:6px 10px;font-size:12px">${p.mode||""}</td><td style="padding:6px 10px;font-size:12px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:"<div style='font-size:12px;color:#555;margin-top:4px'>No payments made yet</div>"}
+      </div>
+    </td></tr>`;}).join("")}
   ${rows.length===0?`<tr><td colspan="6" class="empty">${T("noPurch")}</td></tr>`:""}</tbody></table></div>`;
 }
 
@@ -407,6 +431,13 @@ function payLogHTML(){
     return`<tr><td>${p.date}</td><td><span class="badge ${isIn?"bg-gr":"bg-bl"}">${isIn?T("paymentFrom"):T("paymentTo")}</span></td><td><b>${p.party}</b></td><td style="color:${isIn?"#16a34a":"#1a56db"}"><b>${fmt(p.amount)}</b></td><td>${p.mode||""}</td><td>${p.reference||""}</td>
     <td><button class="btn btn-d btn-sm" onclick="delPay('${p.id}')">${T("delete")}</button></td></tr>`;}).join("")}
   ${S.paymentLogs.length===0?`<tr><td colspan="7" class="empty">No payment records yet</td></tr>`:""}</tbody></table></div>`;
+}
+
+function showDetails(type,name){
+  const prefix=type==="customer"?"det_cust_":"det_vend_";
+  const id=prefix+name.replace(/[^a-zA-Z0-9]/g,'_');
+  const el=document.getElementById(id);
+  if(el){el.style.display=el.style.display==="none"?"":"none";}
 }
 
 function showPayForm(type,party){
@@ -512,7 +543,7 @@ function xcsv(type){
   let csv="",fn="";
   if(type==="purchases"){csv="Date,Chemical,Vendor,Qty(kg),Price/kg,Total,Added By\n";S.purchases.forEach(p=>{csv+=`${p.date},"${p.chemical}","${p.vendor}",${p.qty},${p.pricePerKg},${p.qty*p.pricePerKg},${p.addedBy||""}\n`;});fn="purva_purchases.csv";}
   else if(type==="sales"){csv="Date,Chemical,Customer,Qty(kg),Sell Rate,Cost Rate,Margin/kg,Total Profit\n";S.sales.forEach(s=>{const m=s.pricePerKg-(s.costPerKg||0);csv+=`${s.date},"${s.chemical}","${s.customer}",${s.qty},${s.pricePerKg},${s.costPerKg||0},${m},${m*s.qty}\n`;});fn="purva_sales.csv";}
-  else{csv="Chemical,Available(kg),Avg Cost/kg,Stock Value\n";const inv=getInv();Object.entries(inv).forEach(([c,d])=>{const a=d.qty>0?d.tc/d.qty:0;csv+=`"${c}",${d.qty},${a.toFixed(2)},${(d.qty*a).toFixed(2)}\n`;});fn="purva_inventory.csv";}
+  else{csv="Chemical,Available(kg),Status\n";const inv=getInv();Object.entries(inv).forEach(([c,d])=>{const st=d.qty<=0?"Out of Stock":d.qty<50?"Low Stock":"In Stock";csv+=`"${c}",${d.qty},"${st}"\n`;});fn="purva_inventory.csv";}
   const b=new Blob([csv],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=fn;a.click();toast(fn+" downloaded");
 }
 R();
