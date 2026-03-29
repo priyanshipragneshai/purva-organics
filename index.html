@@ -9,63 +9,67 @@
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f5f5f5;color:#111;min-height:100vh}
 .login-page{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#1e293b,#334155)}
 .login-box{background:#fff;border-radius:12px;padding:40px;width:380px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.login-box h1{font-size:22px;margin-bottom:4px;color:#1e293b}
-.login-box p{color:#64748b;font-size:14px;margin-bottom:24px}
+.login-box h1{font-size:22px;margin-bottom:4px;color:#1e293b}.login-box p{color:#64748b;font-size:14px;margin-bottom:24px}
 .login-box label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#334155}
-.login-box select,.login-box input{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin-bottom:16px;outline:none}
-.login-box select:focus,.login-box input:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.1)}
-.login-box button.main-btn{width:100%;padding:12px;background:#1a56db;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer}
-.login-box button.main-btn:hover{background:#1e40af}
+.login-box input{width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;margin-bottom:16px;outline:none}
+.login-box input:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.1)}
+.login-box button.mb{width:100%;padding:12px;background:#1a56db;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer}
+.login-box button.mb:hover{background:#1e40af}
 .login-err{color:#dc2626;font-size:13px;margin-bottom:12px;display:none}
 .sidebar{width:220px;background:#1e293b;color:#cbd5e1;padding:20px 0;display:flex;flex-direction:column;position:fixed;height:100vh;z-index:10;overflow-y:auto}
-.sidebar .logo{padding:0 20px 20px;border-bottom:1px solid #334155;margin-bottom:8px}
-.sidebar .logo h2{color:#fff;font-size:17px}
-.sidebar .logo span{font-size:12px;color:#94a3b8}
+.sidebar .logo{padding:0 20px 16px;border-bottom:1px solid #334155;margin-bottom:4px}
+.sidebar .logo h2{color:#fff;font-size:16px}.sidebar .logo span{font-size:11px;color:#94a3b8}
 .sidebar nav{flex:1;display:flex;flex-direction:column}
-.sidebar nav a{display:flex;align-items:center;gap:10px;padding:11px 20px;color:#cbd5e1;text-decoration:none;font-size:14px;cursor:pointer;transition:all .15s}
+.sidebar nav a{display:flex;align-items:center;gap:10px;padding:10px 20px;color:#cbd5e1;text-decoration:none;font-size:13px;cursor:pointer;transition:all .15s}
 .sidebar nav a:hover{background:#334155;color:#fff}
 .sidebar nav a.active{background:#3b82f6;color:#fff;font-weight:600}
-.sidebar .user-info{padding:16px 20px;border-top:1px solid #334155;font-size:12px}
-.sidebar .user-info .role{color:#3b82f6;font-weight:600;text-transform:uppercase;font-size:11px}
-.main{margin-left:220px;flex:1;padding:24px;min-height:100vh}
-.page-hdr{margin-bottom:24px}.page-hdr h1{font-size:22px;font-weight:700}.page-hdr p{color:#555;font-size:14px;margin-top:2px}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px}
-.sc{background:#fff;border-radius:10px;padding:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.sc .lb{font-size:12px;color:#555;text-transform:uppercase;letter-spacing:.5px;font-weight:600}.sc .vl{font-size:26px;font-weight:700;margin-top:4px}.sc .sb{font-size:12px;color:#555;margin-top:2px}
-.card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:20px;overflow:hidden}
-.card-hd{padding:16px 20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}.card-hd h3{font-size:15px;font-weight:700}
+.sidebar .user-info{padding:12px 20px;border-top:1px solid #334155;font-size:11px}
+.comp-sw{padding:8px 16px;display:flex;flex-wrap:wrap;gap:4px}
+.comp-sw button{padding:4px 8px;border-radius:5px;font-size:10px;font-weight:600;cursor:pointer;border:1px solid #475569;background:transparent;color:#94a3b8;white-space:nowrap}
+.comp-sw button.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.lang-sw{padding:4px 16px 8px;display:flex;gap:4px}
+.lang-sw button{padding:3px 8px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;border:1px solid #475569;background:transparent;color:#94a3b8}
+.lang-sw button.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
+.main{margin-left:220px;flex:1;padding:20px;min-height:100vh}
+.page-hdr{margin-bottom:20px}.page-hdr h1{font-size:20px;font-weight:700}.page-hdr p{color:#555;font-size:13px;margin-top:2px}
+.comp-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:12px;font-weight:700;background:#dbeafe;color:#1e40af;margin-left:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:20px}
+.sc{background:#fff;border-radius:10px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.sc .lb{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:.5px;font-weight:600}.sc .vl{font-size:22px;font-weight:700;margin-top:3px}.sc .sb{font-size:11px;color:#555;margin-top:2px}
+.card{background:#fff;border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px;overflow:hidden}
+.card-hd{padding:14px 18px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}.card-hd h3{font-size:14px;font-weight:700}
 table{width:100%;border-collapse:collapse}
-th{background:#f8fafc;padding:10px 14px;text-align:left;font-size:12px;text-transform:uppercase;color:#555;font-weight:700;letter-spacing:.3px;border-bottom:1px solid #ddd}
-td{padding:10px 14px;font-size:13px;border-bottom:1px solid #f1f5f9}tr:hover td{background:#f8fafc}
-.btn{padding:8px 16px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:6px}
+th{background:#f8fafc;padding:8px 12px;text-align:left;font-size:11px;text-transform:uppercase;color:#555;font-weight:700;border-bottom:1px solid #ddd}
+td{padding:8px 12px;font-size:12px;border-bottom:1px solid #f1f5f9}tr:hover td{background:#f8fafc}
+.btn{padding:7px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:5px}
 .btn-p{background:#1a56db;color:#fff}.btn-p:hover{background:#1e40af}
 .btn-s{background:#16a34a;color:#fff}.btn-d{background:#dc2626;color:#fff}.btn-o{background:#fff;color:#111;border:1px solid #ddd}
-.btn-sm{padding:5px 10px;font-size:12px}
-.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px}
-.fi{display:flex;flex-direction:column;gap:4px}.fi.full{grid-column:1/-1}
-.fi label{font-size:12px;font-weight:600;color:#555}
-.fi input,.fi select,.fi textarea{padding:9px 12px;border:1px solid #d1d5db;border-radius:7px;font-size:13px;outline:none;width:100%;box-sizing:border-box}
+.btn-sm{padding:4px 8px;font-size:11px}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px}
+.fi{display:flex;flex-direction:column;gap:3px}.fi.full{grid-column:1/-1}
+.fi label{font-size:11px;font-weight:600;color:#555}
+.fi input,.fi select,.fi textarea{padding:8px 10px;border:1px solid #d1d5db;border-radius:7px;font-size:12px;outline:none;width:100%;box-sizing:border-box}
 .fi input:focus,.fi select:focus{border-color:#1a56db;box-shadow:0 0 0 3px rgba(26,86,219,.08)}
-.fa{padding:0 20px 20px;display:flex;gap:10px;justify-content:flex-end}
-.badge{display:inline-block;padding:3px 8px;border-radius:5px;font-size:11px;font-weight:600}
-.bg-gr{background:#dcfce7;color:#166534}.bg-rd{background:#fee2e2;color:#991b1b}.bg-bl{background:#dbeafe;color:#1e40af}.bg-yl{background:#fef9c3;color:#854d0e}.bg-or{background:#ffedd5;color:#9a3412}
+.fa{padding:0 18px 18px;display:flex;gap:8px;justify-content:flex-end}
+.badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:10px;font-weight:600}
+.bg-gr{background:#dcfce7;color:#166534}.bg-rd{background:#fee2e2;color:#991b1b}.bg-bl{background:#dbeafe;color:#1e40af}.bg-yl{background:#fef9c3;color:#854d0e}
 .modal-ov{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:100}
-.modal{background:#fff;border-radius:12px;width:90%;max-width:700px;max-height:85vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.modal-hd{padding:20px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}.modal-hd h3{font-size:16px;font-weight:700}
+.modal{background:#fff;border-radius:12px;width:92%;max-width:750px;max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-hd{padding:16px 18px;border-bottom:1px solid #ddd;display:flex;justify-content:space-between;align-items:center}.modal-hd h3{font-size:15px;font-weight:700}
 .modal-cl{background:none;border:none;font-size:20px;cursor:pointer;color:#555}
-.empty{padding:40px;text-align:center;color:#555;font-size:14px}
-.toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 20px;border-radius:8px;font-size:13px;z-index:200;animation:si .3s ease}
+.empty{padding:30px;text-align:center;color:#555;font-size:13px}
+.toast{position:fixed;bottom:20px;right:20px;background:#1e293b;color:#fff;padding:10px 18px;border-radius:8px;font-size:12px;z-index:200;animation:si .3s ease}
 @keyframes si{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
-.lang-sw{display:flex;gap:4px;padding:10px 20px}
-.lang-sw button{padding:4px 10px;border-radius:5px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #475569;background:transparent;color:#94a3b8}
-.lang-sw button.active{background:#3b82f6;color:#fff;border-color:#3b82f6}
-.tabs{display:flex;gap:0;border-bottom:2px solid #ddd;margin-bottom:20px}
-.tab{padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;color:#555;text-decoration:none}
+.tabs{display:flex;gap:0;border-bottom:2px solid #ddd;margin-bottom:16px}
+.tab{padding:8px 16px;font-size:12px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;color:#555;text-decoration:none}
 .tab.active{color:#1a56db;border-bottom-color:#1a56db}
-.progress-bar{height:8px;background:#e5e7eb;border-radius:4px;overflow:hidden;margin-top:6px}
-.progress-fill{height:100%;border-radius:4px;transition:width .3s}
-@media(max-width:768px){.sidebar{display:none}.main{margin-left:0;padding:16px}.fg{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
-@media print{.sidebar,.page-hdr .btn,.no-print,.toast{display:none!important}.main{margin:0;padding:0}.card{box-shadow:none}}
+.progress-bar{height:6px;background:#e5e7eb;border-radius:3px;overflow:hidden;margin-top:4px}
+.progress-fill{height:100%;border-radius:3px}
+.item-row{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:8px;align-items:end;margin-bottom:8px}
+.item-row input{padding:7px 8px;border:1px solid #d1d5db;border-radius:6px;font-size:12px;outline:none}
+.item-row button{padding:6px 10px;border:none;border-radius:6px;cursor:pointer;font-size:14px;background:#fee2e2;color:#991b1b}
+@media(max-width:768px){.sidebar{display:none}.main{margin-left:0;padding:12px}.fg{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.item-row{grid-template-columns:1fr 1fr}}
+@media print{.sidebar,.no-print,.toast{display:none!important}.main{margin:0;padding:0}.card{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -75,477 +79,439 @@ td{padding:10px 14px;font-size:13px;border-bottom:1px solid #f1f5f9}tr:hover td{
 <script>
 firebase.initializeApp({apiKey:"AIzaSyDgD7b4pcLhC297EgcNgYG-ui0uDQ_Qy5E",authDomain:"purva-organics-pragnesh.firebaseapp.com",projectId:"purva-organics-pragnesh",storageBucket:"purva-organics-pragnesh.firebasestorage.app",messagingSenderId:"132054678761",appId:"1:132054678761:web:c5cb9f212e814d66ce8478"});
 const db=firebase.firestore();
+const COMPANIES=["Savy","Pragnesh","Khemirang 1","Khemirang 2"];
+const PASS="Pragnesh2003@jasani";
+const PAGES=["dashboard","purchases","inventory","sales","payments","expenses","invoices","settings"];
+const EXP_CATS=["Salary","Marketing","Petrol/Transport","Rent/Office","Other"];
 
-// =====================================================================
-// LANGUAGES
-// =====================================================================
-const L={
-en:{
-appName:"Purva Organics",appSub:"Chemical Trading Management System",selectRole:"Select Role",password:"Password",enterPass:"Enter password",signIn:"Sign In",invalidPass:"Invalid password",
-dashboard:"Dashboard",purchases:"Purchases",inventory:"Inventory",sales:"Sales",payments:"Payments",invoices:"Invoices",settings:"Settings",logout:"Logout",loggedIn:"Logged in",
-dashSub:"Business overview",totalInv:"Total Inventory",chemicals:"chemicals",totalPurch:"Total Purchases",orders:"orders",totalSales:"Total Sales",grossProfit:"Gross Profit",wacMethod:"Weighted avg cost method",
-receivable:"Receivable",payable:"Payable",fromCustomers:"from customers",toVendors:"to vendors",
-profitByChem:"Profit by Chemical",chemical:"Chemical",qtySold:"Qty Sold",revenue:"Revenue",cost:"Cost",profit:"Profit",margin:"Margin",
-date:"Date",vendor:"Vendor",qty:"Qty",rate:"Rate",total:"Total",by:"By",actions:"Actions",delete:"Delete",
-recentPurch:"Recent Purchases",recentSales:"Recent Sales",marginKg:"Margin/kg",customer:"Customer",
-purchLog:"Purchase Log",purchSub:"Track all chemical purchases from vendors",newPurch:"+ New Purchase",exportCSV:"Export CSV",rateKg:"Rate/kg",noPurch:"No purchases yet",
-newPurchEntry:"New Purchase Entry",chemName:"Chemical Name",egChem:"e.g. TB Blue",vendorName:"Vendor name",qtyKg:"Quantity (kg)",priceKg:"Price per kg (INR)",notes:"Notes (optional)",batchNotes:"Batch number, quality notes...",cancel:"Cancel",savePurch:"Save Purchase",fillAll:"Fill all required fields",purchSaved:"Purchase saved to inventory",
-invPage:"Inventory",invSub:"Current stock levels",stockLevels:"Stock Levels",availStock:"Available Stock",avgCostKg:"Avg Cost/kg",stockVal:"Stock Value",status:"Status",outOfStock:"Out of Stock",lowStock:"Low Stock",inStock:"In Stock",noInv:"No inventory yet",
-salesPage:"Sales",salesSub:"Track all sales to customers",newSale:"+ New Sale",sellRate:"Sell Rate",costRate:"Cost Rate",totalProfit:"Total Profit",noSales:"No sales yet",
-newSaleEntry:"New Sale Entry",selectChem:"Select chemical",avail:"avail",custName:"Customer name",sellingPriceKg:"Selling Price/kg (INR)",wacKg:"Weighted Avg Cost/kg",selectChemFirst:"Select chemical first",custAddr:"Customer Address",forInvoice:"For invoice",custGST:"Customer GST (optional)",gstNumber:"GST number",saveSale:"Save Sale",notEnoughStock:"Not enough stock!",saleRecorded:"Sale recorded",
-costBreakdown:"Cost Breakdown",noPurchHistory:"No purchase history",weightedAvgCost:"Weighted Average Cost",
-paymentsPage:"Payments",paymentsSub:"Track customer & vendor payments",custPayments:"Customer Payments",vendorPayments:"Vendor Payments",paymentLog:"Payment History",
-totalAmount:"Total Amount",paid:"Paid",pending:"Pending",recordPayment:"Record Payment",paymentFrom:"Payment From",paymentTo:"Payment To",amount:"Amount",paymentDate:"Payment Date",paymentMode:"Payment Mode",cash:"Cash",bank:"Bank Transfer",cheque:"Cheque",upi:"UPI",reference:"Reference / Note",savePayment:"Save Payment",paymentSaved:"Payment saved",
-fullyPaid:"Fully Paid",partialPaid:"Partial",unpaid:"Unpaid",
-invoicesPage:"Invoices",invoicesSub:"Generate GST invoices",invoiceNum:"Invoice #",viewPrint:"View / Print",noInvoices:"No invoices yet",
-gstRate:"GST Rate",print:"Print",taxInvoice:"TAX INVOICE",billTo:"Bill To",item:"Item",subtotal:"Subtotal",cgst:"CGST",sgst:"SGST",grandTotal:"Grand Total",bankDetails:"Bank Details",bankName:"Bank Name",account:"Account",ifsc:"IFSC",branch:"Branch",authSign:"Authorized Signatory",
-settPage:"Settings",settSub:"Company and bank details",compInfo:"Company Information",compName:"Company Name",gstNum:"GST Number",address:"Address",phone:"Phone",email:"Email",accNum:"Account Number",ifscCode:"IFSC Code",saveSett:"Save Settings",settSaved:"Settings saved",
-deleted:"Deleted",invoice:"Invoice",payNow:"Pay"
-},
-hi:{
-appName:"पूर्वा ऑर्गेनिक्स",appSub:"केमिकल ट्रेडिंग मैनेजमेंट सिस्टम",selectRole:"भूमिका चुनें",password:"पासवर्ड",enterPass:"पासवर्ड दर्ज करें",signIn:"साइन इन",invalidPass:"गलत पासवर्ड",
-dashboard:"डैशबोर्ड",purchases:"खरीद",inventory:"इन्वेंटरी",sales:"बिक्री",payments:"भुगतान",invoices:"चालान",settings:"सेटिंग्स",logout:"लॉगआउट",loggedIn:"लॉग इन",
-dashSub:"व्यापार सारांश",totalInv:"कुल इन्वेंटरी",chemicals:"केमिकल",totalPurch:"कुल खरीद",orders:"ऑर्डर",totalSales:"कुल बिक्री",grossProfit:"कुल लाभ",wacMethod:"भारित औसत लागत विधि",
-receivable:"प्राप्य",payable:"देय",fromCustomers:"ग्राहकों से",toVendors:"विक्रेताओं को",
-profitByChem:"केमिकल अनुसार लाभ",chemical:"केमिकल",qtySold:"बेची मात्रा",revenue:"आय",cost:"लागत",profit:"लाभ",margin:"मार्जिन",
-date:"तारीख",vendor:"विक्रेता",qty:"मात्रा",rate:"दर",total:"कुल",by:"द्वारा",actions:"कार्रवाई",delete:"हटाएं",
-recentPurch:"हाल की खरीद",recentSales:"हाल की बिक्री",marginKg:"मार्जिन/kg",customer:"ग्राहक",
-purchLog:"खरीद लॉग",purchSub:"विक्रेताओं से सभी केमिकल खरीद ट्रैक करें",newPurch:"+ नई खरीद",exportCSV:"CSV डाउनलोड",rateKg:"दर/kg",noPurch:"अभी कोई खरीद नहीं",
-newPurchEntry:"नई खरीद एंट्री",chemName:"केमिकल का नाम",egChem:"जैसे TB Blue",vendorName:"विक्रेता का नाम",qtyKg:"मात्रा (kg)",priceKg:"प्रति kg कीमत (INR)",notes:"नोट्स (वैकल्पिक)",batchNotes:"बैच नंबर, गुणवत्ता नोट्स...",cancel:"रद्द करें",savePurch:"खरीद सेव करें",fillAll:"सभी आवश्यक फील्ड भरें",purchSaved:"खरीद इन्वेंटरी में सेव हुई",
-invPage:"इन्वेंटरी",invSub:"वर्तमान स्टॉक स्तर",stockLevels:"स्टॉक स्तर",availStock:"उपलब्ध स्टॉक",avgCostKg:"औसत लागत/kg",stockVal:"स्टॉक मूल्य",status:"स्थिति",outOfStock:"स्टॉक खत्म",lowStock:"कम स्टॉक",inStock:"स्टॉक में",noInv:"अभी कोई इन्वेंटरी नहीं",
-salesPage:"बिक्री",salesSub:"ग्राहकों को सभी बिक्री ट्रैक करें",newSale:"+ नई बिक्री",sellRate:"बिक्री दर",costRate:"लागत दर",totalProfit:"कुल लाभ",noSales:"अभी कोई बिक्री नहीं",
-newSaleEntry:"नई बिक्री एंट्री",selectChem:"केमिकल चुनें",avail:"उपलब्ध",custName:"ग्राहक का नाम",sellingPriceKg:"बिक्री मूल्य/kg (INR)",wacKg:"भारित औसत लागत/kg",selectChemFirst:"पहले केमिकल चुनें",custAddr:"ग्राहक का पता",forInvoice:"चालान के लिए",custGST:"ग्राहक GST (वैकल्पिक)",gstNumber:"GST नंबर",saveSale:"बिक्री सेव करें",notEnoughStock:"पर्याप्त स्टॉक नहीं!",saleRecorded:"बिक्री दर्ज",
-costBreakdown:"लागत विवरण",noPurchHistory:"कोई खरीद इतिहास नहीं",weightedAvgCost:"भारित औसत लागत",
-paymentsPage:"भुगतान",paymentsSub:"ग्राहक और विक्रेता भुगतान ट्रैक करें",custPayments:"ग्राहक भुगतान",vendorPayments:"विक्रेता भुगतान",paymentLog:"भुगतान इतिहास",
-totalAmount:"कुल राशि",paid:"भुगतान",pending:"बाकी",recordPayment:"भुगतान दर्ज करें",paymentFrom:"भुगतान प्राप्त",paymentTo:"भुगतान करें",amount:"राशि",paymentDate:"भुगतान तारीख",paymentMode:"भुगतान माध्यम",cash:"नकद",bank:"बैंक ट्रांसफर",cheque:"चेक",upi:"UPI",reference:"संदर्भ / नोट",savePayment:"भुगतान सेव करें",paymentSaved:"भुगतान सेव हुआ",
-fullyPaid:"पूरा भुगतान",partialPaid:"आंशिक",unpaid:"बाकी",
-invoicesPage:"चालान",invoicesSub:"GST चालान बनाएं",invoiceNum:"चालान #",viewPrint:"देखें / प्रिंट",noInvoices:"अभी कोई चालान नहीं",
-gstRate:"GST दर",print:"प्रिंट",taxInvoice:"कर चालान",billTo:"बिल प्राप्तकर्ता",item:"आइटम",subtotal:"उप-कुल",cgst:"CGST",sgst:"SGST",grandTotal:"कुल योग",bankDetails:"बैंक विवरण",bankName:"बैंक का नाम",account:"खाता",ifsc:"IFSC",branch:"शाखा",authSign:"अधिकृत हस्ताक्षरकर्ता",
-settPage:"सेटिंग्स",settSub:"चालान के लिए कंपनी और बैंक विवरण",compInfo:"कंपनी की जानकारी",compName:"कंपनी का नाम",gstNum:"GST नंबर",address:"पता",phone:"फोन",email:"ईमेल",accNum:"खाता संख्या",ifscCode:"IFSC कोड",saveSett:"सेटिंग्स सेव करें",settSaved:"सेटिंग्स सेव हुईं",
-deleted:"हटाया गया",invoice:"चालान",payNow:"भुगतान करें"
-},
-gu:{
-appName:"પૂર્વા ઓર્ગેનિક્સ",appSub:"કેમિકલ ટ્રેડિંગ મેનેજમેન્ટ સિસ્ટમ",selectRole:"ભૂમિકા પસંદ કરો",password:"પાસવર્ડ",enterPass:"પાસવર્ડ દાખલ કરો",signIn:"સાઇન ઇન",invalidPass:"ખોટો પાસવર્ડ",
-dashboard:"ડેશબોર્ડ",purchases:"ખરીદી",inventory:"ઇન્વેન્ટરી",sales:"વેચાણ",payments:"ચુકવણી",invoices:"ઇન્વોઇસ",settings:"સેટિંગ્સ",logout:"લૉગઆઉટ",loggedIn:"લૉગ ઇન",
-dashSub:"વ્યાપાર સારાંશ",totalInv:"કુલ ઇન્વેન્ટરી",chemicals:"કેમિકલ",totalPurch:"કુલ ખરીદી",orders:"ઓર્ડર",totalSales:"કુલ વેચાણ",grossProfit:"કુલ નફો",wacMethod:"ભારિત સરેરાશ ખર્ચ પદ્ધતિ",
-receivable:"લેવાના",payable:"આપવાના",fromCustomers:"ગ્રાહકો પાસેથી",toVendors:"વેચનારને",
-profitByChem:"કેમિકલ મુજબ નફો",chemical:"કેમિકલ",qtySold:"વેચાયેલ જથ્થો",revenue:"આવક",cost:"ખર્ચ",profit:"નફો",margin:"માર્જિન",
-date:"તારીખ",vendor:"વેચનાર",qty:"જથ્થો",rate:"દર",total:"કુલ",by:"દ્વારા",actions:"કાર્યવાહી",delete:"કાઢી નાખો",
-recentPurch:"તાજેતરની ખરીદી",recentSales:"તાજેતરનું વેચાણ",marginKg:"માર્જિન/kg",customer:"ગ્રાહક",
-purchLog:"ખરીદી લોગ",purchSub:"વેચનારો પાસેથી બધી કેમિકલ ખરીદી ટ્રેક કરો",newPurch:"+ નવી ખરીદી",exportCSV:"CSV ડાઉનલોડ",rateKg:"દર/kg",noPurch:"હજુ કોઈ ખરીદી નથી",
-newPurchEntry:"નવી ખરીદી એન્ટ્રી",chemName:"કેમિકલનું નામ",egChem:"દા.ત. TB Blue",vendorName:"વેચનારનું નામ",qtyKg:"જથ્થો (kg)",priceKg:"પ્રતિ kg ભાવ (INR)",notes:"નોંધ (વૈકલ્પિક)",batchNotes:"બેચ નંબર, ગુણવત્તા નોંધ...",cancel:"રદ કરો",savePurch:"ખરીદી સેવ કરો",fillAll:"બધા જરૂરી ફિલ્ડ ભરો",purchSaved:"ખરીદી ઇન્વેન્ટરીમાં સેવ થઈ",
-invPage:"ઇન્વેન્ટરી",invSub:"હાલનો સ્ટોક લેવલ",stockLevels:"સ્ટોક લેવલ",availStock:"ઉપલબ્ધ સ્ટોક",avgCostKg:"સરેરાશ ખર્ચ/kg",stockVal:"સ્ટોક મૂલ્ય",status:"સ્થિતિ",outOfStock:"સ્ટોક ખતમ",lowStock:"ઓછો સ્ટોક",inStock:"સ્ટોકમાં",noInv:"હજુ કોઈ ઇન્વેન્ટરી નથી",
-salesPage:"વેચાણ",salesSub:"ગ્રાહકોને બધું વેચાણ ટ્રેક કરો",newSale:"+ નવું વેચાણ",sellRate:"વેચાણ દર",costRate:"ખર્ચ દર",totalProfit:"કુલ નફો",noSales:"હજુ કોઈ વેચાણ નથી",
-newSaleEntry:"નવું વેચાણ એન્ટ્રી",selectChem:"કેમિકલ પસંદ કરો",avail:"ઉપલબ્ધ",custName:"ગ્રાહકનું નામ",sellingPriceKg:"વેચાણ ભાવ/kg (INR)",wacKg:"ભારિત સરેરાશ ખર્ચ/kg",selectChemFirst:"પહેલા કેમિકલ પસંદ કરો",custAddr:"ગ્રાહકનું સરનામું",forInvoice:"ઇન્વોઇસ માટે",custGST:"ગ્રાહક GST (વૈકલ્પિક)",gstNumber:"GST નંબર",saveSale:"વેચાણ સેવ કરો",notEnoughStock:"પૂરતો સ્ટોક નથી!",saleRecorded:"વેચાણ નોંધાયેલ",
-costBreakdown:"ખર્ચ વિગત",noPurchHistory:"કોઈ ખરીદી ઇતિહાસ નથી",weightedAvgCost:"ભારિત સરેરાશ ખર્ચ",
-paymentsPage:"ચુકવણી",paymentsSub:"ગ્રાહક અને વેચનાર ચુકવણી ટ્રેક કરો",custPayments:"ગ્રાહક ચુકવણી",vendorPayments:"વેચનાર ચુકવણી",paymentLog:"ચુકવણી ઇતિહાસ",
-totalAmount:"કુલ રકમ",paid:"ચૂકવેલ",pending:"બાકી",recordPayment:"ચુકવણી નોંધો",paymentFrom:"ચુકવણી પ્રાપ્ત",paymentTo:"ચુકવણી કરો",amount:"રકમ",paymentDate:"ચુકવણી તારીખ",paymentMode:"ચુકવણી માધ્યમ",cash:"રોકડ",bank:"બેન્ક ટ્રાન્સફર",cheque:"ચેક",upi:"UPI",reference:"સંદર્ભ / નોંધ",savePayment:"ચુકવણી સેવ કરો",paymentSaved:"ચુકવણી સેવ થઈ",
-fullyPaid:"પૂર્ણ ચુકવણી",partialPaid:"આંશિક",unpaid:"બાકી",
-invoicesPage:"ઇન્વોઇસ",invoicesSub:"GST ઇન્વોઇસ બનાવો",invoiceNum:"ઇન્વોઇસ #",viewPrint:"જુઓ / પ્રિન્ટ",noInvoices:"હજુ કોઈ ઇન્વોઇસ નથી",
-gstRate:"GST દર",print:"પ્રિન્ટ",taxInvoice:"ટેક્સ ઇન્વોઇસ",billTo:"બિલ પ્રાપ્તકર્તા",item:"આઇટમ",subtotal:"પેટા-કુલ",cgst:"CGST",sgst:"SGST",grandTotal:"કુલ રકમ",bankDetails:"બેન્ક વિગત",bankName:"બેન્કનું નામ",account:"ખાતું",ifsc:"IFSC",branch:"શાખા",authSign:"અધિકૃત હસ્તાક્ષરકર્તા",
-settPage:"સેટિંગ્સ",settSub:"ઇન્વોઇસ માટે કંપની અને બેન્ક વિગત",compInfo:"કંપનીની માહિતી",compName:"કંપનીનું નામ",gstNum:"GST નંબર",address:"સરનામું",phone:"ફોન",email:"ઈમેલ",accNum:"ખાતા નંબર",ifscCode:"IFSC કોડ",saveSett:"સેટિંગ્સ સેવ કરો",settSaved:"સેટિંગ્સ સેવ થઈ",
-deleted:"કાઢી નાખ્યું",invoice:"ઇન્વોઇસ",payNow:"ચૂકવો"
-}};
-
-// =====================================================================
-// STATE
-// =====================================================================
-const PASSWORDS={Admin:"Pragnesh2003@jasani",Purchase:"Purchase18today",Tester:"Tester30quality",Sales:"Sales082000"};
-const ACCESS={Admin:["dashboard","purchases","inventory","sales","payments","invoices","settings"],Purchase:["dashboard","purchases","inventory","payments"],Tester:["dashboard","inventory"],Sales:["dashboard","inventory","sales","payments","invoices"]};
-let S={auth:false,role:"",page:"dashboard",lang:"en",purchases:[],sales:[],paymentLogs:[],
+// ======================= STATE =======================
+let S={auth:false,page:"dashboard",lang:"en",comp:COMPANIES[0],
+  purchases:[],sales:[],payLogs:[],expenses:[],
   company:{name:"Purva Organics",gst:"",address:"",phone:"",email:"",bank:"",accountNo:"",ifsc:"",branch:""},
-  modal:null,toastMsg:null,toastTimer:null,payTab:"customer"};
+  modal:null,toastMsg:null,tt:null,payTab:"customer"};
 let unsubs=[];
-const $=id=>document.getElementById(id);const T=k=>(L[S.lang]||L.en)[k]||L.en[k]||k;
+const $=id=>document.getElementById(id);
 const fmt=n=>"\u20B9"+Number(n||0).toLocaleString("en-IN",{minimumFractionDigits:2,maximumFractionDigits:2});
-const fq=n=>Number(n||0).toLocaleString("en-IN")+" kg";const td=()=>new Date().toISOString().split("T")[0];
-function toast(m){S.toastMsg=m;R();clearTimeout(S.toastTimer);S.toastTimer=setTimeout(()=>{S.toastMsg=null;R()},2500);}
-function getWAC(c){let tc=0,tq=0;S.purchases.filter(p=>p.chemical===c).forEach(p=>{tc+=p.qty*p.pricePerKg;tq+=p.qty;});return tq>0?tc/tq:0;}
-function getInv(){const c={};S.purchases.forEach(p=>{if(!c[p.chemical])c[p.chemical]={qty:0,tc:0};c[p.chemical].qty+=(p.qty||0);c[p.chemical].tc+=(p.qty||0)*(p.pricePerKg||0);});S.sales.forEach(s=>{if(c[s.chemical])c[s.chemical].qty-=(s.qty||0);});return c;}
-function uniq(a,k){return[...new Set(a.map(x=>x[k]).filter(Boolean))];}
-function setLang(l){S.lang=l;R();}
+const fq=n=>Number(n||0).toLocaleString("en-IN")+" kg";
+const td=()=>new Date().toISOString().split("T")[0];
+function toast(m){S.toastMsg=m;R();clearTimeout(S.tt);S.tt=setTimeout(()=>{S.toastMsg=null;R()},2500);}
+function coll(name){return name+"_"+S.comp.replace(/\s/g,"_");}
 
-// Customer totals: total owed by each customer, total paid
-function getCustBalances(){
+// Inventory: sum purchase items - sale items for current company
+function getInv(){
+  const c={};
+  S.purchases.forEach(p=>{(p.items||[]).forEach(it=>{if(!c[it.chemical])c[it.chemical]=0;c[it.chemical]+=(it.qty||0);});});
+  S.sales.forEach(s=>{(s.items||[]).forEach(it=>{if(c[it.chemical]!==undefined)c[it.chemical]-=(it.qty||0);});});
+  return c;
+}
+function getWAC(chem){
+  let tc=0,tq=0;
+  S.purchases.forEach(p=>{(p.items||[]).forEach(it=>{if(it.chemical===chem){tc+=it.qty*it.pricePerKg;tq+=it.qty;}});});
+  return tq>0?tc/tq:0;
+}
+function uniq(arr,key){return[...new Set(arr.map(a=>a[key]).filter(Boolean))];}
+function uniqItems(arr,field){const s=new Set();arr.forEach(a=>(a.items||[]).forEach(it=>{if(it[field])s.add(it[field]);}));return[...s];}
+function getCustBal(){
   const b={};
-  S.sales.forEach(s=>{if(!b[s.customer])b[s.customer]={total:0,paid:0};b[s.customer].total+=s.qty*s.pricePerKg;});
-  // Add GST to totals
-  S.sales.forEach(s=>{if(b[s.customer]){const gstRate=s.gstRate||18;const gstAmt=(s.qty*s.pricePerKg)*gstRate/100;b[s.customer].total+=gstAmt;}});
-  S.paymentLogs.filter(p=>p.type==="customer_in").forEach(p=>{if(b[p.party])b[p.party].paid+=p.amount;});
+  S.sales.forEach(s=>{if(!b[s.customer])b[s.customer]={total:0,paid:0};const t=(s.items||[]).reduce((a,it)=>a+it.qty*it.pricePerKg,0);const gst=t*(s.gstRate||18)/100;b[s.customer].total+=t+gst;});
+  S.payLogs.filter(p=>p.type==="in").forEach(p=>{if(b[p.party])b[p.party].paid+=p.amount;});
   return b;
 }
-// Vendor totals: total owed to each vendor, total paid
-function getVendorBalances(){
+function getVendBal(){
   const b={};
-  S.purchases.forEach(p=>{if(!b[p.vendor])b[p.vendor]={total:0,paid:0};b[p.vendor].total+=p.qty*p.pricePerKg;});
-  S.paymentLogs.filter(p=>p.type==="vendor_out").forEach(p=>{if(b[p.party])b[p.party].paid+=p.amount;});
+  S.purchases.forEach(p=>{if(!b[p.vendor])b[p.vendor]={total:0,paid:0};const t=(p.items||[]).reduce((a,it)=>a+it.qty*it.pricePerKg,0);b[p.vendor].total+=t;});
+  S.payLogs.filter(p=>p.type==="out").forEach(p=>{if(b[p.party])b[p.party].paid+=p.amount;});
   return b;
 }
 
-// =====================================================================
-// FIREBASE
-// =====================================================================
-function listen(){unsubs.forEach(u=>u());unsubs=[];
-  unsubs.push(db.collection("purchases").orderBy("createdAt","desc").onSnapshot(s=>{S.purchases=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
-  unsubs.push(db.collection("sales").orderBy("createdAt","desc").onSnapshot(s=>{S.sales=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
-  unsubs.push(db.collection("paymentLogs").orderBy("createdAt","desc").onSnapshot(s=>{S.paymentLogs=s.docs.map(d=>({id:d.id,...d.data()}));R();}));
+// ======================= FIREBASE =======================
+function listen(){
+  unsubs.forEach(u=>u());unsubs=[];
+  ["purchases","sales","payLogs","expenses"].forEach(col=>{
+    unsubs.push(db.collection(coll(col)).orderBy("createdAt","desc").onSnapshot(snap=>{
+      S[col]=snap.docs.map(d=>({id:d.id,...d.data()}));R();
+    }));
+  });
   unsubs.push(db.collection("settings").doc("company").onSnapshot(d=>{if(d.exists)S.company={...S.company,...d.data()};R();}));
 }
+function switchComp(c){S.comp=c;S.page="dashboard";S.modal=null;listen();}
 
-// =====================================================================
-// RENDER
-// =====================================================================
+// ======================= RENDER =======================
 function R(){const r=$("root");if(!S.auth){r.innerHTML=loginHTML();return;}if(S.modal==="open")return;
   r.innerHTML=sidebarHTML()+'<div class="main">'+pageHTML()+'</div>'+(S.toastMsg?`<div class="toast">${S.toastMsg}</div>`:"");}
 
+// ======================= LOGIN =======================
 function loginHTML(){
   return `<div class="login-page"><div class="login-box">
-    <div style="display:flex;justify-content:flex-end;gap:4px;margin-bottom:16px">
-      ${["en","hi","gu"].map(l=>`<button onclick="S.lang='${l}';$('root').innerHTML=loginHTML()" style="padding:4px 10px;border-radius:5px;font-size:12px;cursor:pointer;border:1px solid #d1d5db;background:${S.lang===l?'#1a56db':'#fff'};color:${S.lang===l?'#fff':'#333'}">${l==="en"?"EN":l==="hi"?"हिंदी":"ગુજ"}</button>`).join("")}
-    </div>
-    <h1>${T("appName")}</h1><p>${T("appSub")}</p>
-    <div class="login-err" id="le">${T("invalidPass")}</div>
-    <label>${T("selectRole")}</label><select id="lr"><option>Admin</option><option>Purchase</option><option>Tester</option><option>Sales</option></select>
-    <label>${T("password")}</label><input type="password" id="lp" placeholder="${T("enterPass")}" onkeydown="if(event.key==='Enter')doLogin()">
-    <button class="main-btn" onclick="doLogin()">${T("signIn")}</button></div></div>`;
+    <h1>Purva Organics</h1><p>Chemical Trading Management System</p>
+    <div class="login-err" id="le">Invalid password</div>
+    <label>Password</label><input type="password" id="lp" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="mb" onclick="doLogin()">Sign In</button></div></div>`;
 }
-function doLogin(){const r=$("lr").value,p=$("lp").value;if(PASSWORDS[r]===p){S.auth=true;S.role=r;S.page="dashboard";listen();R();}else{const e=$("le");e.style.display="block";setTimeout(()=>e.style.display="none",2000);}}
-function doLogout(){S.auth=false;S.role="";unsubs.forEach(u=>u());unsubs=[];R();}
+function doLogin(){if($("lp").value===PASS){S.auth=true;listen();R();}else{const e=$("le");e.style.display="block";setTimeout(()=>e.style.display="none",2000);}}
+function doLogout(){S.auth=false;unsubs.forEach(u=>u());unsubs=[];R();}
 
+// ======================= SIDEBAR =======================
 function sidebarHTML(){
-  const items=[["dashboard",T("dashboard")],["purchases",T("purchases")],["inventory",T("inventory")],["sales",T("sales")],["payments",T("payments")],["invoices",T("invoices")],["settings",T("settings")]].filter(([k])=>ACCESS[S.role].includes(k));
-  return `<div class="sidebar"><div class="logo"><h2>${T("appName")}</h2><span>${T("appSub")}</span></div>
-  <div class="lang-sw">${["en","hi","gu"].map(l=>`<button class="${S.lang===l?'active':''}" onclick="setLang('${l}')">${l==="en"?"EN":l==="hi"?"हिंदी":"ગુજ"}</button>`).join("")}</div>
-  <nav>${items.map(([k,l])=>`<a class="${S.page===k?"active":""}" onclick="nav('${k}')">${l}</a>`).join("")}
-  <a onclick="doLogout()" style="margin-top:auto">${T("logout")}</a></nav>
-  <div class="user-info"><div class="role">${S.role}</div>${T("loggedIn")}</div></div>`;
+  const labels={dashboard:"Dashboard",purchases:"Purchases",inventory:"Inventory",sales:"Sales",payments:"Payments",expenses:"Expenses",invoices:"Invoices",settings:"Settings"};
+  return `<div class="sidebar">
+  <div class="logo"><h2>Purva Organics</h2><span>Management System</span></div>
+  <div class="comp-sw">${COMPANIES.map(c=>`<button class="${S.comp===c?'active':''}" onclick="switchComp('${c}')">${c}</button>`).join("")}</div>
+  <nav>${PAGES.map(p=>`<a class="${S.page===p?'active':''}" onclick="nav('${p}')">${labels[p]}</a>`).join("")}
+  <a onclick="doLogout()" style="margin-top:auto">Logout</a></nav>
+  <div class="user-info"><div style="color:#3b82f6;font-weight:600;font-size:11px">${S.comp}</div>Admin</div></div>`;
 }
 function nav(p){S.page=p;S.modal=null;R();}
-function pageHTML(){switch(S.page){case"dashboard":return dashHTML();case"purchases":return purchHTML();case"inventory":return invHTML();case"sales":return salesHTML();case"payments":return payHTML();case"invoices":return invocHTML();case"settings":return settHTML();default:return dashHTML();}}
+function pageHTML(){switch(S.page){case"dashboard":return dashHTML();case"purchases":return purchHTML();case"inventory":return invHTML();case"sales":return salesHTML();case"payments":return payHTML();case"expenses":return expHTML();case"invoices":return invocHTML();case"settings":return settHTML();default:return dashHTML();}}
 
-// =====================================================================
-// DASHBOARD
-// =====================================================================
+// ======================= HELPERS =======================
+function openModal(html){let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};ov.innerHTML=html;document.body.appendChild(ov);S.modal="open";}
+function closeModal(){const ov=$("modalOv");if(ov)ov.remove();S.modal=null;}
+function hdr(title){return `<div class="page-hdr"><h1>${title}<span class="comp-badge">${S.comp}</span></h1></div>`;}
+
+// ======================= DASHBOARD =======================
 function dashHTML(){
-  const inv=getInv();const ts=Object.values(inv).reduce((a,v)=>a+v.qty,0);
-  const tp=S.purchases.reduce((a,p)=>a+p.qty*p.pricePerKg,0);
-  const tsv=S.sales.reduce((a,s)=>a+s.qty*s.pricePerKg,0);
-  const tcs=S.sales.reduce((a,s)=>a+s.qty*(s.costPerKg||0),0);const gp=tsv-tcs;
-  const cb=getCustBalances();const totalRec=Object.values(cb).reduce((a,v)=>a+(v.total-v.paid),0);
-  const vb=getVendorBalances();const totalPay=Object.values(vb).reduce((a,v)=>a+(v.total-v.paid),0);
-  const cp={};S.sales.forEach(s=>{if(!cp[s.chemical])cp[s.chemical]={rev:0,cost:0,qty:0};cp[s.chemical].rev+=s.qty*s.pricePerKg;cp[s.chemical].cost+=s.qty*(s.costPerKg||0);cp[s.chemical].qty+=s.qty;});
-  let pt="";if(Object.keys(cp).length){pt=`<div class="card"><div class="card-hd"><h3>${T("profitByChem")}</h3></div>
-  <table><thead><tr><th>${T("chemical")}</th><th>${T("qtySold")}</th><th>${T("revenue")}</th><th>${T("cost")}</th><th>${T("profit")}</th><th>${T("margin")}</th></tr></thead><tbody>
-  ${Object.entries(cp).map(([c,d])=>{const pr=d.rev-d.cost;const mg=d.rev>0?(pr/d.rev*100).toFixed(1):0;return`<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td>${fmt(d.rev)}</td><td>${fmt(d.cost)}</td><td style="color:${pr>=0?"#16a34a":"#dc2626"}"><b>${fmt(pr)}</b></td><td><span class="badge ${pr>=0?"bg-gr":"bg-rd"}">${mg}%</span></td></tr>`;}).join("")}</tbody></table></div>`;}
-  return `<div class="page-hdr"><h1>${T("dashboard")}</h1><p>${T("dashSub")}</p></div>
+  const inv=getInv();const totalStock=Object.values(inv).reduce((a,v)=>a+v,0);
+  let totalPurchVal=0;S.purchases.forEach(p=>(p.items||[]).forEach(it=>{totalPurchVal+=it.qty*it.pricePerKg;}));
+  let totalSalesVal=0,totalCost=0;
+  S.sales.forEach(s=>(s.items||[]).forEach(it=>{totalSalesVal+=it.qty*it.pricePerKg;totalCost+=it.qty*(it.costPerKg||0);}));
+  const totalExp=S.expenses.reduce((a,e)=>a+(e.amount||0),0);
+  const grossProfit=totalSalesVal-totalCost;const netProfit=grossProfit-totalExp;
+  const cb=getCustBal();const totalRec=Object.values(cb).reduce((a,v)=>a+(v.total-v.paid),0);
+  const vb=getVendBal();const totalPay=Object.values(vb).reduce((a,v)=>a+(v.total-v.paid),0);
+  const totalReceived=Object.values(cb).reduce((a,v)=>a+v.paid,0);
+  const totalPaidOut=Object.values(vb).reduce((a,v)=>a+v.paid,0);
+  const cashInHand=totalReceived-totalPaidOut-totalExp;
+
+  return hdr("Dashboard")+`
   <div class="stats">
-    <div class="sc"><div class="lb">${T("totalInv")}</div><div class="vl" style="color:#1a56db">${fq(ts)}</div><div class="sb">${Object.keys(inv).length} ${T("chemicals")}</div></div>
-    <div class="sc"><div class="lb">${T("totalPurch")}</div><div class="vl" style="color:#ea580c">${fmt(tp)}</div><div class="sb">${S.purchases.length} ${T("orders")}</div></div>
-    <div class="sc"><div class="lb">${T("totalSales")}</div><div class="vl" style="color:#16a34a">${fmt(tsv)}</div><div class="sb">${S.sales.length} ${T("orders")}</div></div>
-    <div class="sc"><div class="lb">${T("grossProfit")}</div><div class="vl" style="color:${gp>=0?"#16a34a":"#dc2626"}">${fmt(gp)}</div><div class="sb">${T("wacMethod")}</div></div>
+    <div class="sc"><div class="lb">Total Inventory</div><div class="vl" style="color:#1a56db">${fq(totalStock)}</div><div class="sb">${Object.keys(inv).length} chemicals</div></div>
+    <div class="sc"><div class="lb">Total Purchases</div><div class="vl" style="color:#ea580c">${fmt(totalPurchVal)}</div><div class="sb">${S.purchases.length} orders</div></div>
+    <div class="sc"><div class="lb">Total Sales</div><div class="vl" style="color:#16a34a">${fmt(totalSalesVal)}</div><div class="sb">${S.sales.length} orders</div></div>
+    <div class="sc"><div class="lb">Gross Profit</div><div class="vl" style="color:${grossProfit>=0?"#16a34a":"#dc2626"}">${fmt(grossProfit)}</div></div>
   </div>
   <div class="stats">
-    <div class="sc"><div class="lb">${T("receivable")}</div><div class="vl" style="color:#ea580c">${fmt(totalRec)}</div><div class="sb">${T("fromCustomers")}</div></div>
-    <div class="sc"><div class="lb">${T("payable")}</div><div class="vl" style="color:#dc2626">${fmt(totalPay)}</div><div class="sb">${T("toVendors")}</div></div>
+    <div class="sc"><div class="lb">Expenses</div><div class="vl" style="color:#dc2626">${fmt(totalExp)}</div></div>
+    <div class="sc"><div class="lb">Net Profit</div><div class="vl" style="color:${netProfit>=0?"#16a34a":"#dc2626"}">${fmt(netProfit)}</div><div class="sb">Gross - Expenses</div></div>
+    <div class="sc"><div class="lb">Receivable</div><div class="vl" style="color:#ea580c">${fmt(totalRec)}</div><div class="sb">From customers</div></div>
+    <div class="sc"><div class="lb">Payable</div><div class="vl" style="color:#dc2626">${fmt(totalPay)}</div><div class="sb">To vendors</div></div>
   </div>
-  ${pt}
-  <div class="card"><div class="card-hd"><h3>${T("recentPurch")}</h3></div><table><thead><tr><th>${T("date")}</th><th>${T("chemical")}</th><th>${T("vendor")}</th><th>${T("qty")}</th><th>${T("rate")}</th><th>${T("total")}</th></tr></thead><tbody>
-  ${S.purchases.slice(0,5).map(p=>`<tr><td>${p.date}</td><td><b>${p.chemical}</b></td><td>${p.vendor}</td><td>${fq(p.qty)}</td><td>${fmt(p.pricePerKg)}/kg</td><td>${fmt(p.qty*p.pricePerKg)}</td></tr>`).join("")}${S.purchases.length===0?`<tr><td colspan="6" class="empty">${T("noPurch")}</td></tr>`:""}</tbody></table></div>
-  <div class="card"><div class="card-hd"><h3>${T("recentSales")}</h3></div><table><thead><tr><th>${T("date")}</th><th>${T("chemical")}</th><th>${T("customer")}</th><th>${T("qty")}</th><th>${T("rate")}</th><th>${T("marginKg")}</th></tr></thead><tbody>
-  ${S.sales.slice(0,5).map(s=>{const m=s.pricePerKg-(s.costPerKg||0);return`<tr><td>${s.date}</td><td><b>${s.chemical}</b></td><td>${s.customer}</td><td>${fq(s.qty)}</td><td>${fmt(s.pricePerKg)}/kg</td><td style="color:${m>=0?"#16a34a":"#dc2626"}"><b>${fmt(m)}/kg</b></td></tr>`;}).join("")}${S.sales.length===0?`<tr><td colspan="6" class="empty">${T("noSales")}</td></tr>`:""}</tbody></table></div>`;
+  <div class="stats">
+    <div class="sc" style="border:2px solid ${cashInHand>=0?"#16a34a":"#dc2626"}"><div class="lb">Cash In Hand</div><div class="vl" style="color:${cashInHand>=0?"#16a34a":"#dc2626"}">${fmt(cashInHand)}</div><div class="sb">Received - Paid - Expenses</div></div>
+    <div class="sc"><div class="lb">Total Received</div><div class="vl" style="color:#16a34a">${fmt(totalReceived)}</div></div>
+    <div class="sc"><div class="lb">Total Paid Out</div><div class="vl" style="color:#1a56db">${fmt(totalPaidOut)}</div></div>
+  </div>`;
 }
 
-// =====================================================================
-// PURCHASES (goes straight to inventory)
-// =====================================================================
+// ======================= PURCHASES (multi-item) =======================
 function purchHTML(){
-  return `<div class="page-hdr"><h1>${T("purchLog")}</h1><p>${T("purchSub")}</p></div>
-  <div class="no-print" style="margin-bottom:16px;display:flex;gap:10px">
-    <button class="btn btn-p" onclick="showPF()">${T("newPurch")}</button>
-    <button class="btn btn-o" onclick="xcsv('purchases')">${T("exportCSV")}</button></div>
-  <div class="card"><table><thead><tr><th>${T("date")}</th><th>${T("chemical")}</th><th>${T("vendor")}</th><th>${T("qty")}</th><th>${T("rateKg")}</th><th>${T("total")}</th><th>${T("by")}</th><th>${T("actions")}</th></tr></thead><tbody>
-  ${S.purchases.map(p=>`<tr><td>${p.date}</td><td><b>${p.chemical}</b></td><td>${p.vendor}</td><td>${fq(p.qty)}</td><td>${fmt(p.pricePerKg)}</td><td>${fmt(p.qty*p.pricePerKg)}</td><td><span class="badge bg-bl">${p.addedBy||""}</span></td><td><button class="btn btn-d btn-sm" onclick="delP('${p.id}')">${T("delete")}</button></td></tr>`).join("")}
-  ${S.purchases.length===0?`<tr><td colspan="8" class="empty">${T("noPurch")}</td></tr>`:""}</tbody></table></div>`;
+  return hdr("Purchases")+`
+  <div class="no-print" style="margin-bottom:12px;display:flex;gap:8px">
+    <button class="btn btn-p" onclick="showPF()">+ New Purchase</button>
+    <button class="btn btn-o" onclick="xcsv('purchases')">Export CSV</button></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Vendor</th><th>Items</th><th>Total</th><th>Actions</th></tr></thead><tbody>
+  ${S.purchases.map(p=>{const items=p.items||[];const total=items.reduce((a,it)=>a+it.qty*it.pricePerKg,0);
+  return`<tr><td>${p.date}</td><td><b>${p.vendor}</b></td>
+  <td>${items.map(it=>`${it.chemical}: ${fq(it.qty)} @ ${fmt(it.pricePerKg)}/kg`).join("<br>")}</td>
+  <td><b>${fmt(total)}</b></td>
+  <td><button class="btn btn-o btn-sm" onclick="editP('${p.id}')">Edit</button> <button class="btn btn-d btn-sm" onclick="delDoc('${coll("purchases")}','${p.id}')">Del</button></td></tr>`;}).join("")}
+  ${S.purchases.length===0?'<tr><td colspan="5" class="empty">No purchases yet</td></tr>':""}</tbody></table></div>`;
 }
-function showPF(){
-  const ch=uniq(S.purchases,"chemical").map(c=>`<option value="${c}">`).join("");const vn=uniq(S.purchases,"vendor").map(v=>`<option value="${v}">`).join("");
-  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
-  ov.innerHTML=`<div class="modal"><div class="modal-hd"><h3>${T("newPurchEntry")}</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
-  <div class="fg">
-    <div class="fi"><label>${T("date")}</label><input type="date" id="pD" value="${td()}"></div>
-    <div class="fi"><label>${T("chemName")}</label><input id="pC" placeholder="${T("egChem")}" list="cl"><datalist id="cl">${ch}</datalist></div>
-    <div class="fi"><label>${T("vendor")}</label><input id="pV" placeholder="${T("vendorName")}" list="vl"><datalist id="vl">${vn}</datalist></div>
-    <div class="fi"><label>${T("qtyKg")}</label><input type="number" id="pQ" placeholder="500"></div>
-    <div class="fi"><label>${T("priceKg")}</label><input type="number" id="pR" placeholder="120" step="0.01"></div>
-    <div class="fi full"><label>${T("notes")}</label><input id="pN" placeholder="${T("batchNotes")}"></div>
+let tempItems=[];
+function showPF(editId){
+  const p=editId?S.purchases.find(x=>x.id===editId):null;
+  tempItems=p?(p.items||[]).map(it=>({...it})):[{chemical:"",qty:"",pricePerKg:""}];
+  const vn=uniq(S.purchases,"vendor").map(v=>`<option value="${v}">`).join("");
+  const chems=uniqItems(S.purchases,"chemical").map(c=>`<option value="${c}">`).join("");
+  openModal(`<div class="modal" style="max-width:700px"><div class="modal-hd"><h3>${editId?"Edit":"New"} Purchase</h3><button class="modal-cl" onclick="closeModal()">&times;</button></div>
+  <div style="padding:18px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="fi"><label>Date</label><input type="date" id="pD" value="${p?p.date:td()}"></div>
+      <div class="fi"><label>Vendor</label><input id="pV" value="${p?p.vendor:""}" placeholder="Vendor name" list="pvl"><datalist id="pvl">${vn}</datalist></div>
+    </div>
+    <div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><b style="font-size:13px">Items</b><button class="btn btn-o btn-sm" onclick="addTempItem();renderItems()">+ Add Item</button></div>
+    <datalist id="pcl">${chems}</datalist>
+    <div id="itemRows"></div>
+    <div class="fi" style="margin-top:8px"><label>Notes (optional)</label><input id="pN" value="${p?p.notes||"":""}"></div>
   </div>
-  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">${T("cancel")}</button><button class="btn btn-p" onclick="saveP()">${T("savePurch")}</button></div></div>`;
-  document.body.appendChild(ov);S.modal="open";
+  <div class="fa"><button class="btn btn-o" onclick="closeModal()">Cancel</button><button class="btn btn-p" onclick="saveP('${editId||""}')">${editId?"Save Changes":"Save Purchase"}</button></div></div>`);
+  renderItems();
 }
-async function saveP(){
-  const d={date:$("pD").value,chemical:$("pC").value.trim(),vendor:$("pV").value.trim(),qty:parseFloat($("pQ").value)||0,pricePerKg:parseFloat($("pR").value)||0,notes:$("pN").value.trim(),addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
-  if(!d.chemical||!d.vendor||!d.qty||!d.pricePerKg){toast(T("fillAll"));return;}
-  try{await db.collection("purchases").add(d);const ov=document.getElementById("modalOv");if(ov)ov.remove();S.modal=null;toast(T("purchSaved"));}catch(e){toast("Error: "+e.message);}
+function editP(id){showPF(id);}
+function addTempItem(){tempItems.push({chemical:"",qty:"",pricePerKg:""});}
+function removeTempItem(i){tempItems.splice(i,1);renderItems();}
+function renderItems(){
+  const el=$("itemRows");if(!el)return;
+  el.innerHTML=tempItems.map((it,i)=>`<div class="item-row">
+    <input placeholder="Chemical name" value="${it.chemical}" oninput="tempItems[${i}].chemical=this.value" list="pcl">
+    <input type="number" placeholder="Qty (kg)" value="${it.qty}" oninput="tempItems[${i}].qty=this.value">
+    <input type="number" placeholder="Price/kg" value="${it.pricePerKg}" step="0.01" oninput="tempItems[${i}].pricePerKg=this.value">
+    <button onclick="removeTempItem(${i})">x</button>
+  </div>`).join("");
 }
-async function delP(id){if(!confirm(T("delete")+"?"))return;await db.collection("purchases").doc(id).delete();toast(T("deleted"));}
+async function saveP(editId){
+  const items=tempItems.map(it=>({chemical:(it.chemical||"").trim(),qty:parseFloat(it.qty)||0,pricePerKg:parseFloat(it.pricePerKg)||0})).filter(it=>it.chemical&&it.qty&&it.pricePerKg);
+  if(!items.length){toast("Add at least one item");return;}
+  const vendor=($("pV")?$("pV").value:"").trim();const date=$("pD")?$("pD").value:"";
+  if(!vendor||!date){toast("Fill vendor and date");return;}
+  const d={date,vendor,items,notes:($("pN")?$("pN").value:"").trim(),createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  try{if(editId){await db.collection(coll("purchases")).doc(editId).update(d);}else{await db.collection(coll("purchases")).add(d);}
+    closeModal();toast(editId?"Purchase updated":"Purchase saved");
+  }catch(e){toast("Error: "+e.message);}
+}
 
-// =====================================================================
-// INVENTORY (auto from purchases - sales)
-// =====================================================================
+// ======================= SALES (multi-item) =======================
+let tempSaleItems=[];
+function salesHTML(){
+  return hdr("Sales")+`
+  <div class="no-print" style="margin-bottom:12px;display:flex;gap:8px">
+    <button class="btn btn-p" onclick="showSF()">+ New Sale</button>
+    <button class="btn btn-o" onclick="xcsv('sales')">Export CSV</button></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Customer</th><th>Items</th><th>Total</th><th>Profit</th><th>Actions</th></tr></thead><tbody>
+  ${S.sales.map(s=>{const items=s.items||[];const total=items.reduce((a,it)=>a+it.qty*it.pricePerKg,0);const cost=items.reduce((a,it)=>a+it.qty*(it.costPerKg||0),0);const profit=total-cost;
+  return`<tr><td>${s.date}</td><td><b>${s.customer}</b></td>
+  <td>${items.map(it=>`${it.chemical}: ${fq(it.qty)} @ ${fmt(it.pricePerKg)}/kg`).join("<br>")}</td>
+  <td><b>${fmt(total)}</b></td><td style="color:${profit>=0?"#16a34a":"#dc2626"}"><b>${fmt(profit)}</b></td>
+  <td><button class="btn btn-o btn-sm" onclick="editSale('${s.id}')">Edit</button> <button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">Invoice</button> <button class="btn btn-d btn-sm" onclick="delDoc('${coll("sales")}','${s.id}')">Del</button></td></tr>`;}).join("")}
+  ${S.sales.length===0?'<tr><td colspan="6" class="empty">No sales yet</td></tr>':""}</tbody></table></div>`;
+}
+function showSF(editId){
+  const s=editId?S.sales.find(x=>x.id===editId):null;
+  tempSaleItems=s?(s.items||[]).map(it=>({...it})):[{chemical:"",qty:"",pricePerKg:""}];
+  const custs=uniq(S.sales,"customer").map(c=>`<option value="${c}">`).join("");
+  const inv=getInv();const chems=Object.keys(inv).map(c=>`<option value="${c}">`).join("");
+  openModal(`<div class="modal" style="max-width:700px"><div class="modal-hd"><h3>${editId?"Edit":"New"} Sale</h3><button class="modal-cl" onclick="closeModal()">&times;</button></div>
+  <div style="padding:18px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+      <div class="fi"><label>Date</label><input type="date" id="sD" value="${s?s.date:td()}"></div>
+      <div class="fi"><label>Customer</label><input id="sCu" value="${s?s.customer:""}" placeholder="Customer name" list="scul"><datalist id="scul">${custs}</datalist></div>
+      <div class="fi"><label>Customer Address</label><input id="sA" value="${s?s.customerAddr||"":""}" placeholder="For invoice"></div>
+      <div class="fi"><label>Customer GST (optional)</label><input id="sG" value="${s?s.customerGst||"":""}"></div>
+    </div>
+    <div style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center"><b style="font-size:13px">Items</b><button class="btn btn-o btn-sm" onclick="addTempSaleItem();renderSaleItems()">+ Add Item</button></div>
+    <datalist id="scl">${chems}</datalist>
+    <div id="saleItemRows"></div>
+  </div>
+  <div class="fa"><button class="btn btn-o" onclick="closeModal()">Cancel</button><button class="btn btn-s" onclick="saveS('${editId||""}')">${editId?"Save Changes":"Save Sale"}</button></div></div>`);
+  renderSaleItems();
+}
+function editSale(id){showSF(id);}
+function addTempSaleItem(){tempSaleItems.push({chemical:"",qty:"",pricePerKg:""});}
+function removeTempSaleItem(i){tempSaleItems.splice(i,1);renderSaleItems();}
+function renderSaleItems(){
+  const el=$("saleItemRows");if(!el)return;
+  el.innerHTML=tempSaleItems.map((it,i)=>`<div class="item-row">
+    <input placeholder="Chemical" value="${it.chemical}" oninput="tempSaleItems[${i}].chemical=this.value" list="scl">
+    <input type="number" placeholder="Qty (kg)" value="${it.qty}" oninput="tempSaleItems[${i}].qty=this.value">
+    <input type="number" placeholder="Sell price/kg" value="${it.pricePerKg}" step="0.01" oninput="tempSaleItems[${i}].pricePerKg=this.value">
+    <button onclick="removeTempSaleItem(${i})">x</button>
+  </div>`).join("");
+}
+async function saveS(editId){
+  const items=tempSaleItems.map(it=>({chemical:(it.chemical||"").trim(),qty:parseFloat(it.qty)||0,pricePerKg:parseFloat(it.pricePerKg)||0,costPerKg:getWAC((it.chemical||"").trim())})).filter(it=>it.chemical&&it.qty&&it.pricePerKg);
+  if(!items.length){toast("Add at least one item");return;}
+  const customer=($("sCu")?$("sCu").value:"").trim();const date=$("sD")?$("sD").value:"";
+  if(!customer||!date){toast("Fill customer and date");return;}
+  // Check stock
+  const inv=getInv();for(const it of items){if((inv[it.chemical]||0)<it.qty){toast(`Not enough ${it.chemical} in stock!`);return;}}
+  const d={date,customer,items,customerAddr:($("sA")?$("sA").value:"").trim(),customerGst:($("sG")?$("sG").value:"").trim(),gstRate:18,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  try{if(editId){await db.collection(coll("sales")).doc(editId).update(d);}else{await db.collection(coll("sales")).add(d);}
+    closeModal();toast(editId?"Sale updated":"Sale recorded");
+  }catch(e){toast("Error: "+e.message);}
+}
+
+// ======================= INVENTORY =======================
 function invHTML(){
   const inv=getInv();const rows=Object.entries(inv).sort((a,b)=>a[0].localeCompare(b[0]));
-  return `<div class="page-hdr"><h1>${T("invPage")}</h1><p>${T("invSub")}</p></div>
-  <div class="no-print" style="margin-bottom:16px"><button class="btn btn-o" onclick="xcsv('inventory')">${T("exportCSV")}</button></div>
-  <div class="card"><table><thead><tr><th>${T("chemical")}</th><th>${T("availStock")}</th><th>${T("status")}</th></tr></thead><tbody>
-  ${rows.map(([c,d])=>{const st=d.qty<=0?T("outOfStock"):d.qty<50?T("lowStock"):T("inStock");const bc=d.qty<=0?"bg-rd":d.qty<50?"bg-yl":"bg-gr";
-    return`<tr><td><b>${c}</b></td><td>${fq(d.qty)}</td><td><span class="badge ${bc}">${st}</span></td></tr>`;}).join("")}
-  ${rows.length===0?`<tr><td colspan="3" class="empty">${T("noInv")}</td></tr>`:""}</tbody></table></div>`;
+  return hdr("Inventory")+`
+  <div class="card"><table><thead><tr><th>Chemical</th><th>Available Stock</th><th>Status</th></tr></thead><tbody>
+  ${rows.map(([c,q])=>{const st=q<=0?"Out of Stock":q<50?"Low Stock":"In Stock";const bc=q<=0?"bg-rd":q<50?"bg-yl":"bg-gr";
+  return`<tr><td><b>${c}</b></td><td>${fq(q)}</td><td><span class="badge ${bc}">${st}</span></td></tr>`;}).join("")}
+  ${rows.length===0?'<tr><td colspan="3" class="empty">No inventory yet</td></tr>':""}</tbody></table></div>`;
 }
 
-// =====================================================================
-// SALES
-// =====================================================================
-function salesHTML(){
-  return `<div class="page-hdr"><h1>${T("salesPage")}</h1><p>${T("salesSub")}</p></div>
-  <div class="no-print" style="margin-bottom:16px;display:flex;gap:10px">
-    <button class="btn btn-p" onclick="showSF()">${T("newSale")}</button>
-    <button class="btn btn-o" onclick="xcsv('sales')">${T("exportCSV")}</button></div>
-  <div class="card"><table><thead><tr><th>${T("date")}</th><th>${T("chemical")}</th><th>${T("customer")}</th><th>${T("qty")}</th><th>${T("sellRate")}</th><th>${T("costRate")}</th><th>${T("marginKg")}</th><th>${T("totalProfit")}</th><th>${T("actions")}</th></tr></thead><tbody>
-  ${S.sales.map(s=>{const m=s.pricePerKg-(s.costPerKg||0);const p=m*s.qty;
-  return`<tr><td>${s.date}</td><td><b>${s.chemical}</b></td><td>${s.customer}</td><td>${fq(s.qty)}</td><td>${fmt(s.pricePerKg)}</td><td>${fmt(s.costPerKg||0)}</td>
-  <td style="color:${m>=0?"#16a34a":"#dc2626"}"><b>${fmt(m)}</b></td><td style="color:${p>=0?"#16a34a":"#dc2626"}"><b>${fmt(p)}</b></td>
-  <td><button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">${T("invoice")}</button> <button class="btn btn-d btn-sm" onclick="delS('${s.id}')">${T("delete")}</button></td></tr>`;}).join("")}
-  ${S.sales.length===0?`<tr><td colspan="9" class="empty">${T("noSales")}</td></tr>`:""}</tbody></table></div>`;
-}
-function showSF(){
-  const inv=getInv();const chems=Object.entries(inv).filter(([,d])=>d.qty>0);
-  const custs=uniq(S.sales,"customer").map(c=>`<option value="${c}">`).join("");
-  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
-  ov.innerHTML=`<div class="modal"><div class="modal-hd"><h3>${T("newSaleEntry")}</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
-  <div class="fg">
-    <div class="fi"><label>${T("date")}</label><input type="date" id="sD" value="${td()}"></div>
-    <div class="fi"><label>${T("chemical")}</label><select id="sC" onchange="updCH()"><option value="">${T("selectChem")}</option>${chems.map(([c,d])=>`<option value="${c}">${c} (${fq(d.qty)} ${T("avail")})</option>`).join("")}</select></div>
-    <div class="fi"><label>${T("customer")}</label><input id="sCu" placeholder="${T("custName")}" list="cul"><datalist id="cul">${custs}</datalist></div>
-    <div class="fi"><label>${T("qtyKg")}</label><input type="number" id="sQ" placeholder="250"></div>
-    <div class="fi"><label>${T("sellingPriceKg")}</label><input type="number" id="sP" placeholder="130" step="0.01"></div>
-    <div class="fi"><label>${T("wacKg")}</label><div style="display:flex;gap:6px;align-items:center"><input id="sW" readonly style="background:#f1f5f9;flex:1"><button type="button" onclick="showCB()" style="background:#1a56db;color:#fff;border:none;border-radius:6px;width:28px;height:28px;font-size:14px;cursor:pointer;flex-shrink:0" title="${T("costBreakdown")}">i</button></div></div>
-    <div class="fi"><label>${T("custAddr")}</label><input id="sA" placeholder="${T("forInvoice")}"></div>
-    <div class="fi"><label>${T("custGST")}</label><input id="sG" placeholder="${T("gstNumber")}"></div>
-  </div>
-  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">${T("cancel")}</button><button class="btn btn-s" onclick="saveS()">${T("saveSale")}</button></div></div>`;
-  document.body.appendChild(ov);S.modal="open";
-}
-function updCH(){const c=$("sC").value;const w=getWAC(c);$("sW").value=w>0?fmt(w)+"/kg":T("selectChemFirst");}
-function showCB(){
-  const chem=$("sC").value;if(!chem){toast(T("selectChemFirst"));return;}
-  const ps=S.purchases.filter(p=>p.chemical===chem);if(!ps.length){toast(T("noPurchHistory"));return;}
-  let tq=0,tc=0;ps.forEach(p=>{tq+=p.qty;tc+=p.qty*p.pricePerKg;});const wac=tq>0?tc/tq:0;
-  let bd=document.createElement("div");bd.id="breakdownOv";bd.className="modal-ov";bd.style.zIndex="200";bd.onclick=function(e){if(e.target===bd)bd.remove();};
-  bd.innerHTML=`<div class="modal" style="max-width:550px"><div class="modal-hd"><h3>${T("costBreakdown")}: ${chem}</h3><button class="modal-cl" onclick="document.getElementById('breakdownOv').remove()">&times;</button></div>
-  <div style="padding:20px"><table style="width:100%;border-collapse:collapse">
-  <thead><tr><th style="padding:8px 12px;background:#f8fafc;text-align:left;font-size:12px;color:#555;border-bottom:1px solid #ddd">${T("date")}</th><th style="padding:8px 12px;background:#f8fafc;text-align:left;font-size:12px;color:#555;border-bottom:1px solid #ddd">${T("vendor")}</th><th style="padding:8px 12px;background:#f8fafc;text-align:right;font-size:12px;color:#555;border-bottom:1px solid #ddd">${T("qty")}</th><th style="padding:8px 12px;background:#f8fafc;text-align:right;font-size:12px;color:#555;border-bottom:1px solid #ddd">${T("rateKg")}</th><th style="padding:8px 12px;background:#f8fafc;text-align:right;font-size:12px;color:#555;border-bottom:1px solid #ddd">${T("total")}</th></tr></thead>
-  <tbody>${ps.map(p=>`<tr><td style="padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9">${p.date}</td><td style="padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9">${p.vendor}</td><td style="padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9;text-align:right">${fq(p.qty)}</td><td style="padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9;text-align:right">${fmt(p.pricePerKg)}</td><td style="padding:8px 12px;font-size:13px;border-bottom:1px solid #f1f5f9;text-align:right">${fmt(p.qty*p.pricePerKg)}</td></tr>`).join("")}
-  <tr style="background:#f8fafc;font-weight:700"><td colspan="2" style="padding:10px 12px">${T("total")}</td><td style="padding:10px 12px;text-align:right">${fq(tq)}</td><td style="padding:10px 12px;text-align:right">-</td><td style="padding:10px 12px;text-align:right">${fmt(tc)}</td></tr></tbody></table>
-  <div style="margin-top:16px;padding:14px;background:#e8eefb;border-radius:8px;text-align:center"><div style="font-size:12px;color:#555;text-transform:uppercase;font-weight:600">${T("weightedAvgCost")}</div><div style="font-size:24px;font-weight:700;color:#1a56db;margin-top:4px">${fmt(wac)}/kg</div><div style="font-size:12px;color:#555;margin-top:2px">${fmt(tc)} / ${fq(tq)}</div></div></div></div>`;
-  document.body.appendChild(bd);
-}
-async function saveS(){
-  const chem=$("sC").value;const d={date:$("sD").value,chemical:chem,customer:$("sCu").value.trim(),qty:parseFloat($("sQ").value)||0,pricePerKg:parseFloat($("sP").value)||0,costPerKg:getWAC(chem),customerAddr:$("sA").value.trim(),customerGst:$("sG").value.trim(),gstRate:18,addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
-  if(!d.chemical||!d.customer||!d.qty||!d.pricePerKg){toast(T("fillAll"));return;}
-  const inv=getInv();if(!inv[chem]||inv[chem].qty<d.qty){toast(T("notEnoughStock"));return;}
-  try{await db.collection("sales").add(d);const ov=document.getElementById("modalOv");if(ov)ov.remove();S.modal=null;toast(T("saleRecorded"));}catch(e){toast("Error: "+e.message);}
-}
-async function delS(id){if(!confirm(T("delete")+"?"))return;await db.collection("sales").doc(id).delete();toast(T("deleted"));}
-
-// =====================================================================
-// PAYMENTS
-// =====================================================================
+// ======================= PAYMENTS =======================
 function payHTML(){
-  const cb=getCustBalances();const vb=getVendorBalances();
-  return `<div class="page-hdr"><h1>${T("paymentsPage")}</h1><p>${T("paymentsSub")}</p></div>
+  const cb=getCustBal();const vb=getVendBal();
+  return hdr("Payments")+`
   <div class="tabs">
-    <a class="tab ${S.payTab==="customer"?"active":""}" onclick="S.payTab='customer';R()">${T("custPayments")}</a>
-    <a class="tab ${S.payTab==="vendor"?"active":""}" onclick="S.payTab='vendor';R()">${T("vendorPayments")}</a>
-    <a class="tab ${S.payTab==="log"?"active":""}" onclick="S.payTab='log';R()">${T("paymentLog")}</a>
+    <a class="tab ${S.payTab==="customer"?"active":""}" onclick="S.payTab='customer';R()">Customer Receivables</a>
+    <a class="tab ${S.payTab==="vendor"?"active":""}" onclick="S.payTab='vendor';R()">Vendor Payables</a>
+    <a class="tab ${S.payTab==="log"?"active":""}" onclick="S.payTab='log';R()">Payment History</a>
   </div>
-  ${S.payTab==="customer"?payCustomerHTML(cb):""}
-  ${S.payTab==="vendor"?payVendorHTML(vb):""}
-  ${S.payTab==="log"?payLogHTML():""}`;
+  ${S.payTab==="customer"?payCustHTML(cb):""}${S.payTab==="vendor"?payVendHTML(vb):""}${S.payTab==="log"?payLogHTML():""}`;
 }
-
-function payCustomerHTML(cb){
+function payCustHTML(cb){
   const rows=Object.entries(cb).sort((a,b)=>a[0].localeCompare(b[0]));
-  return `<div class="card"><div class="card-hd"><h3>${T("custPayments")} - ${T("receivable")}</h3></div>
-  <table><thead><tr><th>${T("customer")}</th><th>${T("totalAmount")}</th><th>${T("paid")}</th><th>${T("pending")}</th><th>${T("status")}</th><th>${T("actions")}</th></tr></thead><tbody>
+  return `<div class="card"><table><thead><tr><th>Customer</th><th>Total</th><th>Paid</th><th>Pending</th><th>Status</th><th>Actions</th></tr></thead><tbody>
   ${rows.map(([c,d])=>{const pend=d.total-d.paid;const pct=d.total>0?d.paid/d.total*100:0;
-    const st=pend<=0?T("fullyPaid"):d.paid>0?T("partialPaid"):T("unpaid");
-    const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
-    const custSales=S.sales.filter(s=>s.customer===c);
-    const custPays=S.paymentLogs.filter(p=>p.type==="customer_in"&&p.party===c);
+    const st=pend<=0?"Paid":d.paid>0?"Partial":"Unpaid";const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
+    const cSales=S.sales.filter(s=>s.customer===c);const cPays=S.payLogs.filter(p=>p.type==="in"&&p.party===c);
     return`<tr><td><b>${c}</b></td><td>${fmt(d.total)}</td><td style="color:#16a34a">${fmt(d.paid)}</td><td style="color:${pend>0?"#dc2626":"#16a34a"}"><b>${fmt(pend)}</b></td>
     <td><span class="badge ${bc}">${st}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${pend<=0?"#16a34a":"#f59e0b"}"></div></div></td>
-    <td style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn btn-o btn-sm" onclick="showDetails('customer','${c.replace(/'/g,"\\'")}')">Details</button>${pend>0?` <button class="btn btn-s btn-sm" onclick="showPayForm('customer_in','${c.replace(/'/g,"\\'")}')">${T("recordPayment")}</button>`:""}</td></tr>
-    <tr id="det_cust_${c.replace(/[^a-zA-Z0-9]/g,'_')}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc">
-      <div style="padding:16px 20px">
-        <div style="margin-bottom:12px"><b style="font-size:13px">Sales to ${c}:</b></div>
-        <table style="width:100%;margin-bottom:12px"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("chemical")}</th><th style="font-size:11px;padding:6px 10px">${T("qty")}</th><th style="font-size:11px;padding:6px 10px">${T("rate")}/kg</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("amount")}</th><th style="font-size:11px;padding:6px 10px;text-align:right">+GST</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("total")}</th></tr></thead>
-        <tbody>${custSales.map(s=>{const base=s.qty*s.pricePerKg;const gst=base*(s.gstRate||18)/100;return`<tr><td style="padding:6px 10px;font-size:12px">${s.date}</td><td style="padding:6px 10px;font-size:12px">${s.chemical}</td><td style="padding:6px 10px;font-size:12px">${fq(s.qty)}</td><td style="padding:6px 10px;font-size:12px">${fmt(s.pricePerKg)}</td><td style="padding:6px 10px;font-size:12px;text-align:right">${fmt(base)}</td><td style="padding:6px 10px;font-size:12px;text-align:right;color:#555">${fmt(gst)}</td><td style="padding:6px 10px;font-size:12px;text-align:right"><b>${fmt(base+gst)}</b></td></tr>`;}).join("")}</tbody></table>
-        ${custPays.length?`<div style="margin-bottom:8px"><b style="font-size:13px">Payments received from ${c}:</b></div>
-        <table style="width:100%"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("amount")}</th><th style="font-size:11px;padding:6px 10px">${T("paymentMode")}</th><th style="font-size:11px;padding:6px 10px">${T("reference")}</th></tr></thead>
-        <tbody>${custPays.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px;color:#16a34a"><b>${fmt(p.amount)}</b></td><td style="padding:6px 10px;font-size:12px">${p.mode||""}</td><td style="padding:6px 10px;font-size:12px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:"<div style='font-size:12px;color:#555;margin-top:4px'>No payments received yet</div>"}
-      </div>
-    </td></tr>`;}).join("")}
-  ${rows.length===0?`<tr><td colspan="6" class="empty">${T("noSales")}</td></tr>`:""}</tbody></table></div>`;
+    <td><button class="btn btn-o btn-sm" onclick="toggleDet('dc_${c.replace(/[^a-zA-Z0-9]/g,"_")}')">Details</button>${pend>0?` <button class="btn btn-s btn-sm" onclick="showPayF('in','${c.replace(/'/g,"\\'")}')">Record</button>`:""}</td></tr>
+    <tr id="dc_${c.replace(/[^a-zA-Z0-9]/g,"_")}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc"><div style="padding:14px 18px">
+      <b style="font-size:12px">Sales to ${c}:</b>
+      <table style="margin:8px 0"><thead><tr><th style="font-size:10px;padding:5px 8px">Date</th><th style="font-size:10px;padding:5px 8px">Items</th><th style="font-size:10px;padding:5px 8px;text-align:right">Amount</th><th style="font-size:10px;padding:5px 8px;text-align:right">+GST</th></tr></thead><tbody>
+      ${cSales.map(s=>{const t=(s.items||[]).reduce((a,it)=>a+it.qty*it.pricePerKg,0);const g=t*(s.gstRate||18)/100;return`<tr><td style="padding:5px 8px;font-size:11px">${s.date}</td><td style="padding:5px 8px;font-size:11px">${(s.items||[]).map(it=>it.chemical+": "+fq(it.qty)).join(", ")}</td><td style="padding:5px 8px;font-size:11px;text-align:right">${fmt(t)}</td><td style="padding:5px 8px;font-size:11px;text-align:right">${fmt(g)}</td></tr>`;}).join("")}</tbody></table>
+      ${cPays.length?`<b style="font-size:12px">Payments received:</b><table style="margin:8px 0"><thead><tr><th style="font-size:10px;padding:5px 8px">Date</th><th style="font-size:10px;padding:5px 8px">Amount</th><th style="font-size:10px;padding:5px 8px">Mode</th><th style="font-size:10px;padding:5px 8px">Ref</th></tr></thead><tbody>
+      ${cPays.map(p=>`<tr><td style="padding:5px 8px;font-size:11px">${p.date}</td><td style="padding:5px 8px;font-size:11px;color:#16a34a"><b>${fmt(p.amount)}</b></td><td style="padding:5px 8px;font-size:11px">${p.mode||""}</td><td style="padding:5px 8px;font-size:11px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:""}
+    </div></td></tr>`;}).join("")}
+  ${rows.length===0?'<tr><td colspan="6" class="empty">No customer data</td></tr>':""}</tbody></table></div>`;
 }
-
-function payVendorHTML(vb){
+function payVendHTML(vb){
   const rows=Object.entries(vb).sort((a,b)=>a[0].localeCompare(b[0]));
-  return `<div class="card"><div class="card-hd"><h3>${T("vendorPayments")} - ${T("payable")}</h3></div>
-  <table><thead><tr><th>${T("vendor")}</th><th>${T("totalAmount")}</th><th>${T("paid")}</th><th>${T("pending")}</th><th>${T("status")}</th><th>${T("actions")}</th></tr></thead><tbody>
+  return `<div class="card"><table><thead><tr><th>Vendor</th><th>Total</th><th>Paid</th><th>Pending</th><th>Status</th><th>Actions</th></tr></thead><tbody>
   ${rows.map(([v,d])=>{const pend=d.total-d.paid;const pct=d.total>0?d.paid/d.total*100:0;
-    const st=pend<=0?T("fullyPaid"):d.paid>0?T("partialPaid"):T("unpaid");
-    const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
-    const vendPurch=S.purchases.filter(p=>p.vendor===v);
-    const vendPays=S.paymentLogs.filter(p=>p.type==="vendor_out"&&p.party===v);
+    const st=pend<=0?"Paid":d.paid>0?"Partial":"Unpaid";const bc=pend<=0?"bg-gr":d.paid>0?"bg-yl":"bg-rd";
+    const vPurch=S.purchases.filter(p=>p.vendor===v);const vPays=S.payLogs.filter(p=>p.type==="out"&&p.party===v);
     return`<tr><td><b>${v}</b></td><td>${fmt(d.total)}</td><td style="color:#16a34a">${fmt(d.paid)}</td><td style="color:${pend>0?"#dc2626":"#16a34a"}"><b>${fmt(pend)}</b></td>
     <td><span class="badge ${bc}">${st}</span><div class="progress-bar"><div class="progress-fill" style="width:${pct}%;background:${pend<=0?"#16a34a":"#f59e0b"}"></div></div></td>
-    <td style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn btn-o btn-sm" onclick="showDetails('vendor','${v.replace(/'/g,"\\'")}')">Details</button>${pend>0?` <button class="btn btn-p btn-sm" onclick="showPayForm('vendor_out','${v.replace(/'/g,"\\'")}')">${T("payNow")}</button>`:""}</td></tr>
-    <tr id="det_vend_${v.replace(/[^a-zA-Z0-9]/g,'_')}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc">
-      <div style="padding:16px 20px">
-        <div style="margin-bottom:12px"><b style="font-size:13px">Purchases from ${v}:</b></div>
-        <table style="width:100%;margin-bottom:12px"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("chemical")}</th><th style="font-size:11px;padding:6px 10px">${T("qty")}</th><th style="font-size:11px;padding:6px 10px">${T("rate")}/kg</th><th style="font-size:11px;padding:6px 10px;text-align:right">${T("total")}</th></tr></thead>
-        <tbody>${vendPurch.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px">${p.chemical}</td><td style="padding:6px 10px;font-size:12px">${fq(p.qty)}</td><td style="padding:6px 10px;font-size:12px">${fmt(p.pricePerKg)}</td><td style="padding:6px 10px;font-size:12px;text-align:right"><b>${fmt(p.qty*p.pricePerKg)}</b></td></tr>`).join("")}</tbody></table>
-        ${vendPays.length?`<div style="margin-bottom:8px"><b style="font-size:13px">Payments made to ${v}:</b></div>
-        <table style="width:100%"><thead><tr><th style="font-size:11px;padding:6px 10px">${T("date")}</th><th style="font-size:11px;padding:6px 10px">${T("amount")}</th><th style="font-size:11px;padding:6px 10px">${T("paymentMode")}</th><th style="font-size:11px;padding:6px 10px">${T("reference")}</th></tr></thead>
-        <tbody>${vendPays.map(p=>`<tr><td style="padding:6px 10px;font-size:12px">${p.date}</td><td style="padding:6px 10px;font-size:12px;color:#1a56db"><b>${fmt(p.amount)}</b></td><td style="padding:6px 10px;font-size:12px">${p.mode||""}</td><td style="padding:6px 10px;font-size:12px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:"<div style='font-size:12px;color:#555;margin-top:4px'>No payments made yet</div>"}
-      </div>
-    </td></tr>`;}).join("")}
-  ${rows.length===0?`<tr><td colspan="6" class="empty">${T("noPurch")}</td></tr>`:""}</tbody></table></div>`;
+    <td><button class="btn btn-o btn-sm" onclick="toggleDet('dv_${v.replace(/[^a-zA-Z0-9]/g,"_")}')">Details</button>${pend>0?` <button class="btn btn-p btn-sm" onclick="showPayF('out','${v.replace(/'/g,"\\'")}')">Pay</button>`:""}</td></tr>
+    <tr id="dv_${v.replace(/[^a-zA-Z0-9]/g,"_")}" style="display:none"><td colspan="6" style="padding:0;background:#f8fafc"><div style="padding:14px 18px">
+      <b style="font-size:12px">Purchases from ${v}:</b>
+      <table style="margin:8px 0"><thead><tr><th style="font-size:10px;padding:5px 8px">Date</th><th style="font-size:10px;padding:5px 8px">Items</th><th style="font-size:10px;padding:5px 8px;text-align:right">Amount</th></tr></thead><tbody>
+      ${vPurch.map(p=>{const t=(p.items||[]).reduce((a,it)=>a+it.qty*it.pricePerKg,0);return`<tr><td style="padding:5px 8px;font-size:11px">${p.date}</td><td style="padding:5px 8px;font-size:11px">${(p.items||[]).map(it=>it.chemical+": "+fq(it.qty)+" @ "+fmt(it.pricePerKg)+"/kg").join(", ")}</td><td style="padding:5px 8px;font-size:11px;text-align:right"><b>${fmt(t)}</b></td></tr>`;}).join("")}</tbody></table>
+      ${vPays.length?`<b style="font-size:12px">Payments made:</b><table style="margin:8px 0"><thead><tr><th style="font-size:10px;padding:5px 8px">Date</th><th style="font-size:10px;padding:5px 8px">Amount</th><th style="font-size:10px;padding:5px 8px">Mode</th><th style="font-size:10px;padding:5px 8px">Ref</th></tr></thead><tbody>
+      ${vPays.map(p=>`<tr><td style="padding:5px 8px;font-size:11px">${p.date}</td><td style="padding:5px 8px;font-size:11px;color:#1a56db"><b>${fmt(p.amount)}</b></td><td style="padding:5px 8px;font-size:11px">${p.mode||""}</td><td style="padding:5px 8px;font-size:11px">${p.reference||""}</td></tr>`).join("")}</tbody></table>`:""}
+    </div></td></tr>`;}).join("")}
+  ${rows.length===0?'<tr><td colspan="6" class="empty">No vendor data</td></tr>':""}</tbody></table></div>`;
 }
-
 function payLogHTML(){
-  return `<div class="card"><div class="card-hd"><h3>${T("paymentLog")}</h3></div>
-  <table><thead><tr><th>${T("date")}</th><th>Type</th><th>${T("customer")}/${T("vendor")}</th><th>${T("amount")}</th><th>${T("paymentMode")}</th><th>${T("reference")}</th><th>${T("actions")}</th></tr></thead><tbody>
-  ${S.paymentLogs.map(p=>{
-    const isIn=p.type==="customer_in";
-    return`<tr><td>${p.date}</td><td><span class="badge ${isIn?"bg-gr":"bg-bl"}">${isIn?T("paymentFrom"):T("paymentTo")}</span></td><td><b>${p.party}</b></td><td style="color:${isIn?"#16a34a":"#1a56db"}"><b>${fmt(p.amount)}</b></td><td>${p.mode||""}</td><td>${p.reference||""}</td>
-    <td><button class="btn btn-d btn-sm" onclick="delPay('${p.id}')">${T("delete")}</button></td></tr>`;}).join("")}
-  ${S.paymentLogs.length===0?`<tr><td colspan="7" class="empty">No payment records yet</td></tr>`:""}</tbody></table></div>`;
+  return `<div class="card"><table><thead><tr><th>Date</th><th>Type</th><th>Party</th><th>Amount</th><th>Mode</th><th>Reference</th><th>Actions</th></tr></thead><tbody>
+  ${S.payLogs.map(p=>{const isIn=p.type==="in";return`<tr><td>${p.date}</td><td><span class="badge ${isIn?"bg-gr":"bg-bl"}">${isIn?"Received":"Paid"}</span></td><td><b>${p.party}</b></td><td style="color:${isIn?"#16a34a":"#1a56db"}"><b>${fmt(p.amount)}</b></td><td>${p.mode||""}</td><td>${p.reference||""}</td>
+  <td><button class="btn btn-d btn-sm" onclick="delDoc('${coll("payLogs")}','${p.id}')">Del</button></td></tr>`;}).join("")}
+  ${S.payLogs.length===0?'<tr><td colspan="7" class="empty">No payment records</td></tr>':""}</tbody></table></div>`;
 }
-
-function showDetails(type,name){
-  const prefix=type==="customer"?"det_cust_":"det_vend_";
-  const id=prefix+name.replace(/[^a-zA-Z0-9]/g,'_');
-  const el=document.getElementById(id);
-  if(el){el.style.display=el.style.display==="none"?"":"none";}
-}
-
-function showPayForm(type,party){
-  const isIn=type==="customer_in";const balances=isIn?getCustBalances():getVendorBalances();
-  const bal=balances[party];const pend=bal?(bal.total-bal.paid):0;
-  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
-  ov.innerHTML=`<div class="modal" style="max-width:500px"><div class="modal-hd"><h3>${isIn?T("paymentFrom"):T("paymentTo")}: ${party}</h3><button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button></div>
-  <div style="padding:16px 20px;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between">
-    <div><span style="font-size:12px;color:#555">${T("totalAmount")}:</span> <b>${fmt(bal?bal.total:0)}</b></div>
-    <div><span style="font-size:12px;color:#555">${T("paid")}:</span> <b style="color:#16a34a">${fmt(bal?bal.paid:0)}</b></div>
-    <div><span style="font-size:12px;color:#555">${T("pending")}:</span> <b style="color:#dc2626">${fmt(pend)}</b></div>
+function toggleDet(id){const el=$(id);if(el)el.style.display=el.style.display==="none"?"":"none";}
+function showPayF(type,party){
+  const isIn=type==="in";const bals=isIn?getCustBal():getVendBal();const bal=bals[party];const pend=bal?(bal.total-bal.paid):0;
+  openModal(`<div class="modal" style="max-width:480px"><div class="modal-hd"><h3>${isIn?"Receive from":"Pay to"}: ${party}</h3><button class="modal-cl" onclick="closeModal()">&times;</button></div>
+  <div style="padding:12px 18px;background:#f8fafc;border-bottom:1px solid #e2e8f0;display:flex;justify-content:space-between;font-size:12px">
+    <div>Total: <b>${fmt(bal?bal.total:0)}</b></div><div>Paid: <b style="color:#16a34a">${fmt(bal?bal.paid:0)}</b></div><div>Pending: <b style="color:#dc2626">${fmt(pend)}</b></div>
   </div>
   <div class="fg">
-    <div class="fi"><label>${T("paymentDate")}</label><input type="date" id="pyD" value="${td()}"></div>
-    <div class="fi"><label>${T("amount")} (INR)</label><input type="number" id="pyA" placeholder="${pend.toFixed(2)}" step="0.01" max="${pend}"></div>
-    <div class="fi"><label>${T("paymentMode")}</label><select id="pyM"><option value="Cash">${T("cash")}</option><option value="Bank Transfer">${T("bank")}</option><option value="Cheque">${T("cheque")}</option><option value="UPI">${T("upi")}</option></select></div>
-    <div class="fi"><label>${T("reference")}</label><input id="pyR" placeholder="Cheque no, UTR, notes..."></div>
+    <div class="fi"><label>Date</label><input type="date" id="pyD" value="${td()}"></div>
+    <div class="fi"><label>Amount (INR)</label><input type="number" id="pyA" placeholder="${pend.toFixed(2)}" step="0.01"></div>
+    <div class="fi"><label>Mode</label><select id="pyM"><option>Cash</option><option>Bank Transfer</option><option>Cheque</option><option>UPI</option></select></div>
+    <div class="fi"><label>Reference / Note</label><input id="pyR" placeholder="Cheque no, UTR..."></div>
   </div>
-  <div class="fa"><button class="btn btn-o" onclick="document.getElementById('modalOv').remove();S.modal=null;">${T("cancel")}</button><button class="btn btn-s" onclick="savePay('${type}','${party.replace(/'/g,"\\'")}')">${T("savePayment")}</button></div></div>`;
-  document.body.appendChild(ov);S.modal="open";
+  <div class="fa"><button class="btn btn-o" onclick="closeModal()">Cancel</button><button class="btn btn-s" onclick="savePay('${type}','${party.replace(/'/g,"\\'")}')">Save</button></div></div>`);
 }
 async function savePay(type,party){
-  const d={type:type,party:party,date:$("pyD").value,amount:parseFloat($("pyA").value)||0,mode:$("pyM").value,reference:$("pyR").value.trim(),addedBy:S.role,createdAt:firebase.firestore.FieldValue.serverTimestamp()};
-  if(!d.amount||d.amount<=0){toast(T("fillAll"));return;}
-  try{await db.collection("paymentLogs").add(d);const ov=document.getElementById("modalOv");if(ov)ov.remove();S.modal=null;toast(T("paymentSaved"));}catch(e){toast("Error: "+e.message);}
+  const d={type,party,date:$("pyD").value,amount:parseFloat($("pyA").value)||0,mode:$("pyM").value,reference:($("pyR")?$("pyR").value:"").trim(),createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  if(!d.amount){toast("Enter amount");return;}
+  try{await db.collection(coll("payLogs")).add(d);closeModal();toast("Payment saved");}catch(e){toast("Error: "+e.message);}
 }
-async function delPay(id){if(!confirm(T("delete")+"?"))return;await db.collection("paymentLogs").doc(id).delete();toast(T("deleted"));}
 
-// =====================================================================
-// INVOICES (always CGST+SGST, choose rate)
-// =====================================================================
+// ======================= EXPENSES =======================
+function expHTML(){
+  const bycat={};EXP_CATS.forEach(c=>bycat[c]=0);S.expenses.forEach(e=>{bycat[e.category]=(bycat[e.category]||0)+(e.amount||0);});
+  const total=S.expenses.reduce((a,e)=>a+(e.amount||0),0);
+  return hdr("Expenses")+`
+  <div class="stats">${EXP_CATS.map(c=>`<div class="sc"><div class="lb">${c}</div><div class="vl" style="color:#dc2626;font-size:18px">${fmt(bycat[c])}</div></div>`).join("")}
+    <div class="sc" style="border:2px solid #dc2626"><div class="lb">Total Expenses</div><div class="vl" style="color:#dc2626;font-size:18px">${fmt(total)}</div></div>
+  </div>
+  <div class="no-print" style="margin-bottom:12px"><button class="btn btn-p" onclick="showExpF()">+ Add Expense</button></div>
+  <div class="card"><table><thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Amount</th><th>Actions</th></tr></thead><tbody>
+  ${S.expenses.map(e=>`<tr><td>${e.date}</td><td><span class="badge bg-bl">${e.category}</span></td><td>${e.description||""}</td><td style="color:#dc2626"><b>${fmt(e.amount)}</b></td>
+  <td><button class="btn btn-o btn-sm" onclick="editExp('${e.id}')">Edit</button> <button class="btn btn-d btn-sm" onclick="delDoc('${coll("expenses")}','${e.id}')">Del</button></td></tr>`).join("")}
+  ${S.expenses.length===0?'<tr><td colspan="5" class="empty">No expenses yet</td></tr>':""}</tbody></table></div>`;
+}
+function showExpF(editId){
+  const e=editId?S.expenses.find(x=>x.id===editId):null;
+  openModal(`<div class="modal" style="max-width:480px"><div class="modal-hd"><h3>${editId?"Edit":"Add"} Expense</h3><button class="modal-cl" onclick="closeModal()">&times;</button></div>
+  <div class="fg">
+    <div class="fi"><label>Date</label><input type="date" id="exD" value="${e?e.date:td()}"></div>
+    <div class="fi"><label>Category</label><select id="exC">${EXP_CATS.map(c=>`<option ${e&&e.category===c?"selected":""}>${c}</option>`).join("")}</select></div>
+    <div class="fi"><label>Amount (INR)</label><input type="number" id="exA" value="${e?e.amount:""}" placeholder="5000" step="0.01"></div>
+    <div class="fi"><label>Description</label><input id="exDesc" value="${e?e.description||"":""}" placeholder="Worker name, details..."></div>
+  </div>
+  <div class="fa"><button class="btn btn-o" onclick="closeModal()">Cancel</button><button class="btn btn-p" onclick="saveExp('${editId||""}')">Save</button></div></div>`);
+}
+function editExp(id){showExpF(id);}
+async function saveExp(editId){
+  const d={date:$("exD").value,category:$("exC").value,amount:parseFloat($("exA").value)||0,description:($("exDesc")?$("exDesc").value:"").trim(),createdAt:firebase.firestore.FieldValue.serverTimestamp()};
+  if(!d.amount){toast("Enter amount");return;}
+  try{if(editId){await db.collection(coll("expenses")).doc(editId).update(d);}else{await db.collection(coll("expenses")).add(d);}
+    closeModal();toast("Expense saved");
+  }catch(e){toast("Error: "+e.message);}
+}
+
+// ======================= INVOICES =======================
 function invocHTML(){
-  return `<div class="page-hdr"><h1>${T("invoicesPage")}</h1><p>${T("invoicesSub")}</p></div>
-  <div class="card"><table><thead><tr><th>${T("date")}</th><th>${T("invoiceNum")}</th><th>${T("customer")}</th><th>${T("chemical")}</th><th>${T("amount")}</th><th>${T("actions")}</th></tr></thead><tbody>
-  ${S.sales.map((s,i)=>{const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(i+1).padStart(3,"0");
-  return`<tr><td>${s.date}</td><td><b>${n}</b></td><td>${s.customer}</td><td>${s.chemical}</td><td>${fmt(s.qty*s.pricePerKg)}</td>
-  <td><button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">${T("viewPrint")}</button></td></tr>`;}).join("")}
-  ${S.sales.length===0?`<tr><td colspan="6" class="empty">${T("noInvoices")}</td></tr>`:""}</tbody></table></div>`;
+  return hdr("Invoices")+`
+  <div class="card"><table><thead><tr><th>Date</th><th>Invoice #</th><th>Customer</th><th>Items</th><th>Amount</th><th>Actions</th></tr></thead><tbody>
+  ${S.sales.map((s,i)=>{const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(i+1).padStart(3,"0");const t=(s.items||[]).reduce((a,it)=>a+it.qty*it.pricePerKg,0);
+  return`<tr><td>${s.date}</td><td><b>${n}</b></td><td>${s.customer}</td><td>${(s.items||[]).length} items</td><td>${fmt(t)}</td>
+  <td><button class="btn btn-p btn-sm" onclick="genInv('${s.id}')">View/Print</button></td></tr>`;}).join("")}
+  ${S.sales.length===0?'<tr><td colspan="6" class="empty">No invoices yet</td></tr>':""}</tbody></table></div>`;
 }
 function genInv(sid){
   const s=S.sales.find(x=>x.id===sid);if(!s)return;const idx=S.sales.indexOf(s);
   const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(idx+1).padStart(3,"0");
-  let ov=document.createElement("div");ov.id="modalOv";ov.className="modal-ov";ov.onclick=function(e){if(e.target===ov){ov.remove();S.modal=null;}};
-  ov.innerHTML=`<div class="modal" style="max-width:850px"><div class="modal-hd"><h3>${T("invoice")} ${n}</h3>
-  <div style="display:flex;align-items:center;gap:10px">
-    <label style="font-size:13px;font-weight:600">${T("gstRate")}:</label>
-    <select id="grt" onchange="updInvP('${sid}')" style="padding:6px 10px;border:1px solid #d1d5db;border-radius:6px;font-size:13px"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
-    <button class="btn btn-p btn-sm" onclick="printInv()">${T("print")}</button>
-    <button class="modal-cl" onclick="document.getElementById('modalOv').remove();S.modal=null;">&times;</button>
-  </div></div>
-  <div id="ib" style="padding:20px">${buildInv(s,n,18)}</div></div>`;
-  document.body.appendChild(ov);S.modal="open";
+  openModal(`<div class="modal" style="max-width:850px"><div class="modal-hd"><h3>Invoice ${n}</h3>
+  <div style="display:flex;align-items:center;gap:8px">
+    <label style="font-size:12px;font-weight:600">GST Rate:</label>
+    <select id="grt" onchange="updInv('${sid}')" style="padding:5px 8px;border:1px solid #d1d5db;border-radius:6px;font-size:12px"><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select>
+    <button class="btn btn-p btn-sm" onclick="printInv()">Print</button>
+    <button class="modal-cl" onclick="closeModal()">&times;</button>
+  </div></div><div id="ib" style="padding:18px">${buildInv(s,n,18)}</div></div>`);
 }
-function updInvP(sid){const s=S.sales.find(x=>x.id===sid);if(!s)return;const idx=S.sales.indexOf(s);const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(idx+1).padStart(3,"0");const rate=parseFloat($("grt").value);$("ib").innerHTML=buildInv(s,n,rate);}
+function updInv(sid){const s=S.sales.find(x=>x.id===sid);if(!s)return;const idx=S.sales.indexOf(s);const n="PO-"+(s.date||"").replace(/-/g,"")+"-"+String(idx+1).padStart(3,"0");$("ib").innerHTML=buildInv(s,n,parseFloat($("grt").value));}
 function buildInv(s,n,rate){
-  const co=S.company;const sub=s.qty*s.pricePerKg;const halfRate=rate/2;const cgst=sub*halfRate/100;const sgst=cgst;const gt=sub+cgst+sgst;
-  return `<div id="ip" style="background:#fff;padding:40px;border:1px solid #e2e8f0;border-radius:8px;max-width:750px;margin:0 auto">
-  <div style="display:flex;justify-content:space-between;margin-bottom:30px;padding-bottom:20px;border-bottom:2px solid #1e293b">
-    <div><h2 style="font-size:20px;margin-bottom:4px">${co.name||"Purva Organics"}</h2><p style="font-size:12px;color:#64748b;max-width:250px">${co.address||""}</p>${co.phone?`<p style="font-size:12px;color:#64748b">Ph: ${co.phone}</p>`:""}${co.gst?`<p style="font-size:12px;color:#64748b">GST: ${co.gst}</p>`:""}</div>
-    <div style="text-align:right"><h3 style="font-size:18px;color:#1a56db">${T("taxInvoice")}</h3><p style="font-size:13px;margin-top:8px"><b>${T("invoiceNum")}:</b> ${n}</p><p style="font-size:13px"><b>${T("date")}:</b> ${s.date}</p></div>
+  const co=S.company;const items=s.items||[];const sub=items.reduce((a,it)=>a+it.qty*it.pricePerKg,0);
+  const hr=rate/2;const cgst=sub*hr/100;const gt=sub+cgst*2;
+  return `<div id="ip" style="background:#fff;padding:36px;border:1px solid #e2e8f0;border-radius:8px;max-width:750px;margin:0 auto">
+  <div style="display:flex;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:2px solid #1e293b">
+    <div><h2 style="font-size:18px;margin-bottom:3px">${co.name||"Purva Organics"}</h2><p style="font-size:11px;color:#64748b;max-width:220px">${co.address||""}</p>${co.phone?`<p style="font-size:11px;color:#64748b">Ph: ${co.phone}</p>`:""}${co.gst?`<p style="font-size:11px;color:#64748b">GST: ${co.gst}</p>`:""}</div>
+    <div style="text-align:right"><h3 style="font-size:16px;color:#1a56db">TAX INVOICE</h3><p style="font-size:12px;margin-top:6px"><b>Invoice:</b> ${n}</p><p style="font-size:12px"><b>Date:</b> ${s.date}</p></div>
   </div>
-  <div style="margin-bottom:20px;padding:14px;background:#f8fafc;border-radius:8px"><p style="font-size:11px;text-transform:uppercase;color:#64748b;font-weight:700;margin-bottom:4px">${T("billTo")}</p><p style="font-size:14px;font-weight:700">${s.customer}</p><p style="font-size:12px;color:#64748b">${s.customerAddr||""}</p>${s.customerGst?`<p style="font-size:12px;color:#64748b">GST: ${s.customerGst}</p>`:""}</div>
-  <table style="width:100%;border-collapse:collapse;margin-bottom:16px"><thead><tr><th style="padding:10px;background:#f1f5f9;text-align:left">${T("item")}</th><th style="padding:10px;background:#f1f5f9;text-align:right">${T("qty")} (kg)</th><th style="padding:10px;background:#f1f5f9;text-align:right">${T("rate")}/kg</th><th style="padding:10px;background:#f1f5f9;text-align:right">${T("amount")}</th></tr></thead>
-  <tbody><tr><td style="padding:10px">${s.chemical}</td><td style="padding:10px;text-align:right">${Number(s.qty).toLocaleString("en-IN")}</td><td style="padding:10px;text-align:right">${fmt(s.pricePerKg)}</td><td style="padding:10px;text-align:right">${fmt(sub)}</td></tr>
-  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">${T("subtotal")}</td><td style="text-align:right;font-weight:600;padding:10px">${fmt(sub)}</td></tr>
-  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">${T("cgst")} @ ${halfRate}%</td><td style="text-align:right;padding:10px">${fmt(cgst)}</td></tr>
-  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:10px">${T("sgst")} @ ${halfRate}%</td><td style="text-align:right;padding:10px">${fmt(sgst)}</td></tr>
-  <tr style="background:#f1f5f9"><td colspan="3" style="text-align:right;font-weight:700;font-size:15px;padding:12px">${T("grandTotal")}</td><td style="text-align:right;font-weight:700;font-size:15px;padding:12px">${fmt(gt)}</td></tr></tbody></table>
-  ${co.bank?`<div style="margin-top:20px;padding:14px;background:#f8fafc;border-radius:8px;font-size:12px"><p style="font-weight:700;margin-bottom:4px">${T("bankDetails")}</p><p>${T("bankName")}: ${co.bank}</p><p>${T("account")}: ${co.accountNo||""}</p><p>${T("ifsc")}: ${co.ifsc||""}</p><p>${T("branch")}: ${co.branch||""}</p></div>`:""}
-  <div style="margin-top:30px;text-align:right;font-size:12px;color:#64748b"><p>For <b>${co.name||"Purva Organics"}</b></p><p style="margin-top:40px">${T("authSign")}</p></div></div>`;
+  <div style="margin-bottom:16px;padding:12px;background:#f8fafc;border-radius:8px"><p style="font-size:10px;text-transform:uppercase;color:#64748b;font-weight:700;margin-bottom:3px">Bill To</p><p style="font-size:13px;font-weight:700">${s.customer}</p><p style="font-size:11px;color:#64748b">${s.customerAddr||""}</p>${s.customerGst?`<p style="font-size:11px;color:#64748b">GST: ${s.customerGst}</p>`:""}</div>
+  <table style="width:100%;border-collapse:collapse;margin-bottom:12px"><thead><tr><th style="padding:8px;background:#f1f5f9;text-align:left;font-size:11px">Item</th><th style="padding:8px;background:#f1f5f9;text-align:right;font-size:11px">Qty (kg)</th><th style="padding:8px;background:#f1f5f9;text-align:right;font-size:11px">Rate/kg</th><th style="padding:8px;background:#f1f5f9;text-align:right;font-size:11px">Amount</th></tr></thead>
+  <tbody>${items.map(it=>`<tr><td style="padding:8px;font-size:12px">${it.chemical}</td><td style="padding:8px;font-size:12px;text-align:right">${Number(it.qty).toLocaleString("en-IN")}</td><td style="padding:8px;font-size:12px;text-align:right">${fmt(it.pricePerKg)}</td><td style="padding:8px;font-size:12px;text-align:right">${fmt(it.qty*it.pricePerKg)}</td></tr>`).join("")}
+  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:8px">Subtotal</td><td style="text-align:right;font-weight:600;padding:8px">${fmt(sub)}</td></tr>
+  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:8px">CGST @ ${hr}%</td><td style="text-align:right;padding:8px">${fmt(cgst)}</td></tr>
+  <tr><td colspan="3" style="text-align:right;font-weight:600;padding:8px">SGST @ ${hr}%</td><td style="text-align:right;padding:8px">${fmt(cgst)}</td></tr>
+  <tr style="background:#f1f5f9"><td colspan="3" style="text-align:right;font-weight:700;font-size:14px;padding:10px">Grand Total</td><td style="text-align:right;font-weight:700;font-size:14px;padding:10px">${fmt(gt)}</td></tr></tbody></table>
+  ${co.bank?`<div style="margin-top:16px;padding:12px;background:#f8fafc;border-radius:8px;font-size:11px"><p style="font-weight:700;margin-bottom:3px">Bank Details</p><p>Bank: ${co.bank}</p><p>A/C: ${co.accountNo||""}</p><p>IFSC: ${co.ifsc||""}</p><p>Branch: ${co.branch||""}</p></div>`:""}
+  <div style="margin-top:24px;text-align:right;font-size:11px;color:#64748b"><p>For <b>${co.name||"Purva Organics"}</b></p><p style="margin-top:36px">Authorized Signatory</p></div></div>`;
 }
 function printInv(){const el=$("ip");if(!el)return;const w=window.open("","","width=800,height=600");w.document.write(`<html><head><title>Invoice</title><style>body{font-family:-apple-system,sans-serif;padding:20px}table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #e2e8f0}h2,h3{margin:0}p{margin:2px 0}</style></head><body>${el.outerHTML}</body></html>`);w.document.close();w.print();}
 
-// =====================================================================
-// SETTINGS
-// =====================================================================
+// ======================= SETTINGS =======================
 function settHTML(){
   const c=S.company;
-  return `<div class="page-hdr"><h1>${T("settPage")}</h1><p>${T("settSub")}</p></div>
-  <div class="card"><div class="card-hd"><h3>${T("compInfo")}</h3></div><div class="fg">
-    <div class="fi"><label>${T("compName")}</label><input id="sn" value="${c.name||""}"></div>
-    <div class="fi"><label>${T("gstNum")}</label><input id="sg" value="${c.gst||""}"></div>
-    <div class="fi full"><label>${T("address")}</label><textarea id="sa" rows="2" style="padding:9px 12px;border:1px solid #d1d5db;border-radius:7px;font-size:13px;outline:none;width:100%;box-sizing:border-box;font-family:inherit">${c.address||""}</textarea></div>
-    <div class="fi"><label>${T("phone")}</label><input id="sp" value="${c.phone||""}"></div>
-    <div class="fi"><label>${T("email")}</label><input id="se" value="${c.email||""}"></div>
+  return hdr("Settings")+`
+  <div class="card"><div class="card-hd"><h3>Company Information</h3></div><div class="fg">
+    <div class="fi"><label>Company Name</label><input id="sn" value="${c.name||""}"></div>
+    <div class="fi"><label>GST Number</label><input id="sg" value="${c.gst||""}"></div>
+    <div class="fi full"><label>Address</label><textarea id="sa" rows="2" style="padding:8px 10px;border:1px solid #d1d5db;border-radius:7px;font-size:12px;outline:none;width:100%;box-sizing:border-box;font-family:inherit">${c.address||""}</textarea></div>
+    <div class="fi"><label>Phone</label><input id="sp" value="${c.phone||""}"></div>
+    <div class="fi"><label>Email</label><input id="se" value="${c.email||""}"></div>
   </div></div>
-  <div class="card"><div class="card-hd"><h3>${T("bankDetails")}</h3></div><div class="fg">
-    <div class="fi"><label>${T("bankName")}</label><input id="sb" value="${c.bank||""}"></div>
-    <div class="fi"><label>${T("accNum")}</label><input id="sac" value="${c.accountNo||""}"></div>
-    <div class="fi"><label>${T("ifscCode")}</label><input id="si" value="${c.ifsc||""}"></div>
-    <div class="fi"><label>${T("branch")}</label><input id="sbr" value="${c.branch||""}"></div>
-  </div><div class="fa"><button class="btn btn-p" onclick="saveSett()">${T("saveSett")}</button></div></div>`;
+  <div class="card"><div class="card-hd"><h3>Bank Details</h3></div><div class="fg">
+    <div class="fi"><label>Bank Name</label><input id="sb" value="${c.bank||""}"></div>
+    <div class="fi"><label>Account Number</label><input id="sac" value="${c.accountNo||""}"></div>
+    <div class="fi"><label>IFSC Code</label><input id="si" value="${c.ifsc||""}"></div>
+    <div class="fi"><label>Branch</label><input id="sbr" value="${c.branch||""}"></div>
+  </div><div class="fa"><button class="btn btn-p" onclick="saveSett()">Save Settings</button></div></div>`;
 }
 async function saveSett(){
   const d={name:$("sn").value.trim(),gst:$("sg").value.trim(),address:$("sa").value.trim(),phone:$("sp").value.trim(),email:$("se").value.trim(),bank:$("sb").value.trim(),accountNo:$("sac").value.trim(),ifsc:$("si").value.trim(),branch:$("sbr").value.trim()};
-  try{await db.collection("settings").doc("company").set(d);toast(T("settSaved"));}catch(e){toast("Error: "+e.message);}
+  try{await db.collection("settings").doc("company").set(d);toast("Settings saved");}catch(e){toast("Error: "+e.message);}
 }
 
-// =====================================================================
-// CSV EXPORT
-// =====================================================================
+// ======================= SHARED =======================
+async function delDoc(col,id){if(!confirm("Delete?"))return;await db.collection(col).doc(id).delete();toast("Deleted");}
+
 function xcsv(type){
   let csv="",fn="";
-  if(type==="purchases"){csv="Date,Chemical,Vendor,Qty(kg),Price/kg,Total,Added By\n";S.purchases.forEach(p=>{csv+=`${p.date},"${p.chemical}","${p.vendor}",${p.qty},${p.pricePerKg},${p.qty*p.pricePerKg},${p.addedBy||""}\n`;});fn="purva_purchases.csv";}
-  else if(type==="sales"){csv="Date,Chemical,Customer,Qty(kg),Sell Rate,Cost Rate,Margin/kg,Total Profit\n";S.sales.forEach(s=>{const m=s.pricePerKg-(s.costPerKg||0);csv+=`${s.date},"${s.chemical}","${s.customer}",${s.qty},${s.pricePerKg},${s.costPerKg||0},${m},${m*s.qty}\n`;});fn="purva_sales.csv";}
-  else{csv="Chemical,Available(kg),Status\n";const inv=getInv();Object.entries(inv).forEach(([c,d])=>{const st=d.qty<=0?"Out of Stock":d.qty<50?"Low Stock":"In Stock";csv+=`"${c}",${d.qty},"${st}"\n`;});fn="purva_inventory.csv";}
+  if(type==="purchases"){csv="Date,Vendor,Chemical,Qty(kg),Price/kg,Total\n";S.purchases.forEach(p=>(p.items||[]).forEach(it=>{csv+=`${p.date},"${p.vendor}","${it.chemical}",${it.qty},${it.pricePerKg},${it.qty*it.pricePerKg}\n`;}));fn=S.comp+"_purchases.csv";}
+  else if(type==="sales"){csv="Date,Customer,Chemical,Qty(kg),Sell Price/kg,Cost/kg,Total\n";S.sales.forEach(s=>(s.items||[]).forEach(it=>{csv+=`${s.date},"${s.customer}","${it.chemical}",${it.qty},${it.pricePerKg},${it.costPerKg||0},${it.qty*it.pricePerKg}\n`;}));fn=S.comp+"_sales.csv";}
   const b=new Blob([csv],{type:"text/csv"});const a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=fn;a.click();toast(fn+" downloaded");
 }
+
 R();
 </script>
 </body>
